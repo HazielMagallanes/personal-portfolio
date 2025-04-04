@@ -1,0 +1,25 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Just my personal portfolio for showing my work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HazielMagallanes/personal-portfolio.git"
+  },
+  "keywords": [
+    "phaser3;portfolio;game;videogame;js;phaser"
+  ],
+  "author": "Haziel Magallanes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HazielMagallanes/personal-portfolio/issues"
+  },
+  "homepage": "https://github.com/HazielMagallanes/personal-portfolio",
+  "dependencies": {
+    "phaser": "^3.88.2"
+  }
+}
