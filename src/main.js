@@ -6,7 +6,7 @@ import Menu from './game/scenes/UI/Menu.js';
 import World from './game/scenes/World.js';
 
 const config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     width: 256,
     height: 128,
     scale: {

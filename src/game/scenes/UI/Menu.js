@@ -18,17 +18,21 @@ export default class Menu extends Phaser.Scene {
         this.clouds6.tilePositionX = width / 3;
         this.scaleBackground();
 
+        this.backgroundLayers = [this.sky, this.clouds1, this.clouds2, this.clouds3, this.clouds4, this.clouds5, this.clouds6];
+
         // 📝 UI elements
         this.gameTitle = this.add.text(width / 2, height / 4, "HAZU'S PORTFOLIO", {
             fontSize: '12px',
             fill: '#ffffff',
-            fontFamily: 'press-start-2p'
+            fontFamily: 'press-start-2p',
+            resolution: 30
         }).setOrigin(0.5);
 
         this.startButton = new BouncingElement(this.add.text(width / 2, height / 2, '(Presiona espacio para empezar)', {
             fontSize: '8px',
             fill: '#ffffff',
-            fontFamily: 'press-start-2p'
+            fontFamily: 'press-start-2p',
+            resolution: 50
         }).setOrigin(0.5), 0.08, height / 2.2);
 
         // 🌐 Resize handling
@@ -43,8 +47,21 @@ export default class Menu extends Phaser.Scene {
     }
 
     recenterMenu(width, height) {
+        // Texts
         this.gameTitle.setPosition(width / 2, height / 4);
-        this.startButton.setPosition(width / 2, height / 2);
+        this.startButton.element.setPosition(width / 2, height / 2);
+        // Parallax Layers
+        this.backgroundLayers.forEach((layer) =>{
+            layer.setSize(width, height);
+        })
+        this.sky.setPosition(0, 0);
+        this.clouds1.setPosition(0, 0);
+        this.clouds2.setPosition(0, 0);
+        this.clouds3.setPosition(0, height / 2);
+        this.clouds4.setPosition(0, height);
+        this.clouds5.setPosition(0, 0);
+        this.clouds6.setPosition(0, height / 1.5);
+        this.scaleBackground();
     }
 
     scaleBackground() {
