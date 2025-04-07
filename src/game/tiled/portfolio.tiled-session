@@ -17,11 +17,11 @@
             "scaleInEditor": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
-            "scale": 1,
-            "selectedLayer": 1,
+            "scale": 3,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -291.5,
-                "y": -29
+                "x": -674.3333333333333,
+                "y": 38.83333333333332
             }
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
@@ -36,7 +36,7 @@
             "scaleInEditor": 2
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house_structure": {
-            "scaleInDock": 4
+            "scaleInDock": 8
         }
     },
     "last.exportedFilePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map",

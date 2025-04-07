@@ -3,7 +3,7 @@ export default class Menu extends Phaser.Scene {
     constructor() {
         super('Menu');
     }
-
+    // TODO:  ADD MORE EMOJIS; THEY LOOK AWESOME
     create() {
         const { width, height } = this.scale;
 
