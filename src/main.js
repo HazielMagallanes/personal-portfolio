@@ -7,17 +7,22 @@ import World from './game/scenes/World.js';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 256,
+    height: 128,
+    scale: {
+        mode: Phaser.Scale.EXPAND,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    backgroundColor: '#0079d6',
     physics: {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: true
         }
     },
+    
     pixelArt: true,
     scene: [Preloader, Menu, World]
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);

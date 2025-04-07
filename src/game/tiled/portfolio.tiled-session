@@ -1,0 +1,64 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "House.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -291.5,
+                "y": -29
+            }
+        },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
+            "dynamicWrapping": true
+        },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#constraints": {
+            "scaleInDock": 1
+        },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house_structure": {
+            "scaleInDock": 4
+        }
+    },
+    "last.exportedFilePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map",
+    "last.imagePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/assets/sprites/tilesets",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": null,
+    "openFiles": [
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx"
+    ],
+    "project": "portfolio.tiled-project",
+    "recentFiles": [
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
+        "House.tsx"
+    ],
+    "resizeMap.removeObjects": false,
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    },
+    "tileset.type": 0
+}

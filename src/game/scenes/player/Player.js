@@ -1,6 +1,6 @@
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, scale) {
-        super(scene, x, y, 'player', 'walk_fright_01');
+    constructor(scene, x, y) {
+        super(scene, x, y, 'player', 'walk01');
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -8,34 +8,23 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.setSize(this.width / 3, this.height / 2);
         this.setOffset(this.width / 3, this.height / 3); 
 
-        this.setScale(scale);
+        //this.setScale(scale);
         this.setCollideWorldBounds(true);
-        this.direction = 'right';
 
         this.createAnimations(scene);
         this.keys = scene.input.keyboard.addKeys({
             left: 'A',
+            up: 'W',
             right: 'D'
         });
+        
     }
 
     createAnimations(scene) {
         scene.anims.create({
-            key: 'walk_right',
+            key: 'walk',
             frames: scene.anims.generateFrameNames('player', {
-                prefix: 'walk_fright_',
-                start: 1,
-                end: 8,
-                zeroPad: 2
-            }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        scene.anims.create({
-            key: 'walk_left',
-            frames: scene.anims.generateFrameNames('player', {
-                prefix: 'walk_fleft_',
+                prefix: 'walk',
                 start: 1,
                 end: 8,
                 zeroPad: 2
@@ -54,23 +43,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (left.isDown) {
             this.setVelocityX(-speed);
-            this.anims.play('walk_left', true);
-            this.direction = 'left';
+            this.setFlipX(true);
+            this.anims.play('walk', true);
             moving = true;
         } else if (right.isDown) {
             this.setVelocityX(speed);
-            this.anims.play('walk_right', true);
-            this.direction = 'right';
+            this.setFlipX(false);
+            this.anims.play('walk', true);
             moving = true;
         }
 
         if (!moving) {
             this.anims.stop();
-            if (this.direction === 'right') {
-                this.setFrame('walk_fright_01');
-            } else {
-                this.setFrame('walk_fleft_01');
-            }
+            this.setFrame('walk01');
         }
     }
 }
