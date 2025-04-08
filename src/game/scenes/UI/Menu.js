@@ -22,19 +22,9 @@ export default class Menu extends Phaser.Scene {
         this.scaleBackground();
 
         // 📝 UI elements
-        this.gameTitle = this.add.text(width / 2, height / 4, "HAZU'S PORTFOLIO", {
-            fontSize: '12px',
-            fill: '#ffffff',
-            fontFamily: 'press-start-2p',
-            resolution: 60
-        }).setOrigin(0.5);
-
-        this.startButton = new BouncingElement(this.add.text(width / 2, height / 2, '(Presiona espacio para empezar)', {
-            fontSize: '8px',
-            fill: '#ffffff',
-            fontFamily: 'press-start-2p',
-            resolution: 50
-        }).setOrigin(0.5), 0.08, height / 2.2);
+        // Use pregenerated text to avoid problems with older gpus and integrated graphics (Happened on one of my computers LOL).
+        this.gameTitle = this.add.sprite(width / 2, height / 4, 'title-text').setOrigin(0.5);
+        this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, 'press-space-ES').setOrigin(0.5), 0.08, height / 2.2);
 
         // 🌐 Resize handling
         this.scale.addListener('resize', (gameSize) => {

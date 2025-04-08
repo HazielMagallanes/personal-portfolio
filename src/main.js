@@ -6,13 +6,14 @@ import Menu from './game/scenes/UI/Menu.js';
 import World from './game/scenes/World.js';
 
 const config = {
-    type: Phaser.WEBGL,
+    type: Phaser.CANVAS,
     width: 256,
     height: 128,
     scale: {
         mode: Phaser.Scale.EXPAND,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
+    resolution: window.devicePixelRatio || 1,
     backgroundColor: '#0079d6',
     physics: {
         default: 'arcade',

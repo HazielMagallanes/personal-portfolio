@@ -26,6 +26,9 @@ export default class Preloader extends Phaser.Scene {
         // Fonts
         this.load.font('pixelify-sans-bold', './font/Pixelify-sans/static/PixelifySans-Bold.ttf', 'truetype');
         this.load.font('press-start-2p', './font/Press_Start_2P/PressStart2P-Regular.ttf', 'truetype');
+        // Pregenerated texts
+        this.load.image('title-text', './pregen_text/title.bmp');
+        this.load.image('press-space-ES', './pregen_text/press-space-ES.bmp');
         
     }
 

@@ -31,11 +31,11 @@ export default class World extends Phaser.Scene {
         // TODO: Change this placeholders for new sprites with correct size
         this.parallaxLayers = 
         [
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width + width * 0.1, height + height * 0.1, 'city-1').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width + width * 0.1, height + height * 0.1, 'city-2').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width + width * 0.1, height + height * 0.1, 'city-3').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width + width * 0.1, height + height * 0.1, 'city-4').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width + width * 0.1, height + height * 0.1, 'city-5').setOrigin(0, 0).setTileScale(0.5, 0.4),
+            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-1').setOrigin(0, 0).setTileScale(0.5, 0.4),
+            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-2').setOrigin(0, 0).setTileScale(0.5, 0.4),
+            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-3').setOrigin(0, 0).setTileScale(0.5, 0.4),
+            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-4').setOrigin(0, 0).setTileScale(0.5, 0.4),
+            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-5').setOrigin(0, 0).setTileScale(0.5, 0.4),
         ];
 
         // Draw map
