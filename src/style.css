@@ -1,5 +1,9 @@
+@font-face {
+  font-family: 'press-start-2p';
+  src: url('./game/assets/font/Press_Start_2P/PressStart2P-Regular.ttf');
+}
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'press-start-2p';
 }
 * {
   box-sizing: border-box;
@@ -15,4 +19,9 @@ body{
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+}
+#fps{
+  position: absolute;
+  top: 5%;
+  left: 5%;
 }

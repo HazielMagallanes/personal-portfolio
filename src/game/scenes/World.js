@@ -7,6 +7,9 @@ export default class World extends Phaser.Scene {
     }
 
     create() {
+        // DEBUGGING TOOLS
+        this.fpsText = document.getElementById("fps")
+
         const {width, height} = this.scale;
         // Process map
         const map = this.make.tilemap({ key: 'world' })
@@ -65,7 +68,7 @@ export default class World extends Phaser.Scene {
         this.parallaxLayers.forEach((layer) => {
             layer.setX(this.cameras.main.scrollX - 16);
         })
-        // DEBUG
+        // DEBUGGING TOOLS
         const {up, down, space} = this.keys;
         if(down.isDown){
             this.cameras.main.setZoom(this.cameras.main.zoomX * 0.9);
@@ -74,6 +77,8 @@ export default class World extends Phaser.Scene {
         }else if(space.isDown){
             this.cameras.main.setZoom(1);
         }
+        this.fpsText.innerHTML = Math.FloorTo(this.game.loop.actualFps);
+
         // 🎞️ Parallax
         if(this.player.isMoving){
             if(this.player.speed < 0){
