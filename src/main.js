@@ -6,7 +6,7 @@ import Menu from './game/scenes/UI/Menu.js';
 import World from './game/scenes/World.js';
 
 const config = {
-    type: Phaser.CANVAS,
+    type: Phaser.WEBGL,
     width: 256,
     height: 128,
     scale: {
@@ -22,6 +22,7 @@ const config = {
     },
     
     pixelArt: true,
+    roundPixels: true,
     scene: [Preloader, Menu, World]
 };
 

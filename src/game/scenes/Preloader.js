@@ -14,12 +14,11 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('clouds-3', './placeholder/Clouds/Clouds 1/3.png');
         this.load.image('clouds-4', './placeholder/Clouds/Clouds 1/4.png');
         //🏞️ World Background
-        this.load.image('city-1', './placeholder/Cities/city 5/1.png');
-        this.load.image('city-2', './placeholder/Cities/city 5/2.png');
-        this.load.image('city-3', './placeholder/Cities/city 5/3.png');
-        this.load.image('city-4', './placeholder/Cities/city 5/4.png');
-        this.load.image('city-5', './placeholder/Cities/city 5/5.png');
-        this.load.image('city-6', './placeholder/Cities/city 5/6.png');
+        this.load.image('city-1', './placeholder/EDITED/Cities/cityPOT1.png');
+        this.load.image('city-2', './placeholder/EDITED/Cities/cityPOT2.png');
+        this.load.image('city-3', './placeholder/EDITED/Cities/cityPOT3.png');
+        this.load.image('city-4', './placeholder/EDITED/Cities/cityPOT4.png');
+        this.load.image('city-5', './placeholder/EDITED/Cities/cityPOT5.png');
         // World map
         this.load.tilemapTiledJSON('world', '../map/world.json');
         this.load.image('house-structure-tiles', './sprites/tilesets/house/house_structure.png');
