@@ -42,7 +42,9 @@ export default class World extends Phaser.Scene {
         ];
 
         // Draw map
-        map.createLayer('BG', tileset, 0, 0);
+        this.houseStructure = map.createLayer('BG', tileset, 0, 0);
+        this.houseStructure.addCollidesWith(1)
+        map.setCollisionBetween(1, 9, true, 'BG');
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
@@ -50,7 +52,7 @@ export default class World extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setFollowOffset((width / 4) * -1, height / 5);
         this.cameras.main.useBounds = false;
-        this.physics.world.setBounds(48, 0, 10000, 256 );
+        this.physics.world.setBounds(48, 0, 10000, playerSpawn.y + 10);
 
 
         this.keys = this.input.keyboard.addKeys({
