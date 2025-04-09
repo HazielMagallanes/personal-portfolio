@@ -13,7 +13,8 @@ export default class World extends Phaser.Scene {
         const {width, height} = this.scale;
         // Process map
         const map = this.make.tilemap({ key: 'world' })
-        const tileset = map.addTilesetImage('house_structure', 'house-structure-tiles', 18, 18, 1, 1);
+        map.addTilesetImage('house_structure', 'house-structure-tiles', 18, 18, 1, 1);
+        map.addTilesetImage('furniture', 'house-furniture-tiles', 18, 18, 1, 1);
         const constraints = map.addTilesetImage('constraints', 'constraints-tileset');
 
         // Process map constraints
@@ -42,7 +43,8 @@ export default class World extends Phaser.Scene {
         ];
 
         // Draw map
-        map.createLayer('BG', tileset, 0, 0);
+        map.createLayer('BG', 'house_structure', 0, 0);
+        map.createLayer('Furniture', 'furniture', 0, 0);
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);

@@ -22,6 +22,7 @@ export default class Preloader extends Phaser.Scene {
         // World map
         this.load.tilemapTiledJSON('world', '../map/world.json');
         this.load.image('house-structure-tiles', './sprites/tilesets/extruded/house/house_structure.png');
+        this.load.image('house-furniture-tiles', './sprites/tilesets/extruded/house/house_furniture.png');
         this.load.image('constraints-tileset', './sprites/tilesets/constraints.png');
         // Fonts
         this.load.font('pixelify-sans-bold', './font/Pixelify-sans/static/PixelifySans-Bold.ttf', 'truetype');
