@@ -42,9 +42,7 @@ export default class World extends Phaser.Scene {
         ];
 
         // Draw map
-        this.houseStructure = map.createLayer('BG', tileset, 0, 0);
-        this.houseStructure.addCollidesWith(1)
-        map.setCollisionBetween(1, 9, true, 'BG');
+        map.createLayer('BG', tileset, 0, 0);
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
