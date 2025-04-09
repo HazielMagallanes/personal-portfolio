@@ -13,7 +13,7 @@ export default class World extends Phaser.Scene {
         const {width, height} = this.scale;
         // Process map
         const map = this.make.tilemap({ key: 'world' })
-        const tileset = map.addTilesetImage('house_structure', 'house-structure-tiles');
+        const tileset = map.addTilesetImage('house_structure', 'house-structure-tiles', 18, 18, 1, 1);
         const constraints = map.addTilesetImage('constraints', 'constraints-tileset');
 
         // Process map constraints
@@ -23,11 +23,11 @@ export default class World extends Phaser.Scene {
         // Player spawn location constraint
         const playerSpawn = new Math.Vector2(0, 0)
         constraintsLayer.forEachTile(tile => {
-            if (tile.index != 10 ) return;
+            if (tile.index != 1 ) return;
             // Convert tile coordinates to world coordinates
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
             playerSpawn.x = worldPos.x * constraintsLayer.scaleX;
-            playerSpawn.y = worldPos.y * constraintsLayer.scaleY;
+            playerSpawn.y = (worldPos.y * constraintsLayer.scaleY) + 7;
         });
 
         // 🏞️ BG Layers
@@ -50,7 +50,7 @@ export default class World extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setFollowOffset((width / 4) * -1, height / 5);
         this.cameras.main.useBounds = false;
-        this.physics.world.setBounds( 0, 0, 10000, 256 );
+        this.physics.world.setBounds(48, 0, 10000, 256 );
 
 
         this.keys = this.input.keyboard.addKeys({

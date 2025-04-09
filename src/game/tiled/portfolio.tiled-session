@@ -8,7 +8,7 @@
     ],
     "fileStates": {
         "": {
-            "scaleInDock": 1,
+            "scaleInDock": 8,
             "scaleInEditor": 1
         },
         "House.tsx": {
@@ -40,7 +40,7 @@
         }
     },
     "last.exportedFilePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map",
-    "last.imagePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/assets/sprites/tilesets",
+    "last.imagePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/assets/sprites/tilesets/house",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
@@ -56,9 +56,11 @@
     "resizeMap.removeObjects": false,
     "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 1,
+    "tileset.spacing": 1,
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 16,
+        "width": 16
     },
     "tileset.type": 0
 }
