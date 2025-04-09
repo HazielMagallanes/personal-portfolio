@@ -17,9 +17,6 @@ const config = {
     backgroundColor: '#0079d6',
     physics: {
         default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-        }
     },
     
     pixelArt: true,
