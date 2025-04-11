@@ -33,6 +33,9 @@ export default class Menu extends Phaser.Scene {
             this.recenterMenu(width, height);
         });
         // Interactivity
+        addEventListener('touchend', () => {
+            this.scene.start('World');
+        })
         this.input.keyboard.on('keyup-SPACE', () => {
             this.scene.start('World');
         })
@@ -65,7 +68,6 @@ export default class Menu extends Phaser.Scene {
     }
 
     update() {
-        this.startButton.element.text = this.sys.game.device.os.desktop ? 'Pulsa espacio para comenzar' : 'Toca para comenzar'
         // 🎞️ Parallax
         this.backgroundLayers[1].tilePositionX += 0.02;
         this.backgroundLayers[2].tilePositionX += 0.04;
@@ -75,5 +77,10 @@ export default class Menu extends Phaser.Scene {
         this.backgroundLayers[6].tilePositionX += 0.12;
         // Title animation 
         this.startButton.bounce();
+
+        // Handle smartphones
+        if(this.scale.orientation.toString() != "landscape-primary"){
+            this.scale.lockOrientation("landscape-primary")
+        }
     }
 }

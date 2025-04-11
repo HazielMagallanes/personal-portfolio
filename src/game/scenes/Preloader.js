@@ -32,6 +32,7 @@ export default class Preloader extends Phaser.Scene {
         // Pregenerated texts
         this.load.image('title-text', './pregen_text/title.bmp');
         this.load.image('press-space-ES', './pregen_text/press-space-ES.bmp');
+        this.load.image('touch-screen-ES', './pregen_text/touch-screen-ES.bmp');
         
     }
 

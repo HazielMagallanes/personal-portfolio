@@ -11,7 +11,7 @@ const config = {
     height: 128,
     scale: {
         mode: Phaser.Scale.EXPAND,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     backgroundColor: '#0079d6',
     physics: {
@@ -20,5 +20,4 @@ const config = {
     pixelArt: true,
     scene: [Preloader, Menu, World]
 };
-
 const game = new Phaser.Game(config);
