@@ -20,6 +20,7 @@ export default class Menu extends Phaser.Scene {
         ];
         this.backgroundLayers[6].tilePositionX = width / 3;
         this.scaleBackground();
+        this.scale.lockOrientation("landscape");
 
         // 📝 UI elements
         var startText = this.sys.game.device.os.desktop ? 'press-space-' : 'touch-screen-'
@@ -32,10 +33,12 @@ export default class Menu extends Phaser.Scene {
             const { width, height } = gameSize;
             this.recenterMenu(width, height);
         });
-        // Interactivity
         addEventListener('touchend', () => {
-            this.scene.start('World');
+            if(!this.scene.isActive('World')){
+                this.scene.start('World');
+            }
         })
+        // Interactivity
         this.input.keyboard.on('keyup-SPACE', () => {
             this.scene.start('World');
         })
@@ -79,8 +82,8 @@ export default class Menu extends Phaser.Scene {
         this.startButton.bounce();
 
         // Handle smartphones
-        if(this.scale.orientation.toString() != "landscape-primary"){
-            this.scale.lockOrientation("landscape-primary")
-        }
+/*         if(this.scale.orientation.toString() != "landscape-primary"){
+            
+        } */
     }
 }

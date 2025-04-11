@@ -11,6 +11,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Stats
         this.speed = 200;
+        this.direction = 0;
         this.isMoving = false;
         // Anims
         this.createAnimations(scene);
@@ -36,18 +37,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         });
     }
 
-    update() {
-        const { left, right } = this.keys;
+    move(){
         this.isMoving = false;
         this.setVelocity(0);
-
-        if (left.isDown) {
+        if (this.direction == -1) {
             this.speed = this.speed > 0 ? this.speed * -1 : this.speed;
             this.setVelocityX(this.speed);
             this.setFlipX(true);
             this.anims.play('walk', true);
             this.isMoving = true;
-        } else if (right.isDown) {
+        } else if (this.direction == 1) {
             this.speed = this.speed < 0 ? this.speed * -1 : this.speed;
             this.setVelocityX(this.speed);
             this.setFlipX(false);
@@ -59,5 +58,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.anims.stop();
             this.setFrame('walk01');
         }
+    }
+    update() {
+        const { left, right } = this.keys;
+        if (left.isDown){
+            this.direction = -1;
+        }else if (right.isDown){
+            this.direction = 1;
+        }else if (this.scene.sys.game.device.os.desktop){
+            this.direction = 0;
+        }
+        this.move();
     }
 }
