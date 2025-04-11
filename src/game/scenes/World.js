@@ -45,8 +45,8 @@ export default class World extends Phaser.Scene {
 
         // Draw map
         map.createLayer('BG', 'house_structure', 0, 0);
-        map.createLayer('Furniture', 'furniture', 0, 0);
-        map.createLayer('Furniture2', 'furniture', 256, -3);
+        map.createLayer('Furniture', 'furniture', 0, 1);
+        map.createLayer('Furniture2', 'furniture', 256, -2);
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
