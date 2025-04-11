@@ -13,14 +13,11 @@ const config = {
         mode: Phaser.Scale.EXPAND,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    resolution: window.devicePixelRatio || 1,
     backgroundColor: '#0079d6',
     physics: {
         default: 'arcade',
     },
-    
     pixelArt: true,
-    roundPixels: true,
     scene: [Preloader, Menu, World]
 };
 

@@ -1,4 +1,5 @@
 import BouncingElement from "./BouncingElement";
+
 export default class Menu extends Phaser.Scene {
     constructor() {
         super('Menu');
@@ -6,7 +7,6 @@ export default class Menu extends Phaser.Scene {
     // TODO:  ADD MORE EMOJIS; THEY LOOK AWESOME
     create() {
         const { width, height } = this.scale;
-
         // 🏞️ Background layers
         this.backgroundLayers = 
         [
@@ -22,9 +22,10 @@ export default class Menu extends Phaser.Scene {
         this.scaleBackground();
 
         // 📝 UI elements
+        var startText = this.sys.game.device.os.desktop ? 'press-space-' : 'touch-screen-'
         // Use pregenerated text to avoid problems with older gpus and integrated graphics (Happened on one of my computers LOL).
         this.gameTitle = this.add.sprite(width / 2, height / 4, 'title-text').setOrigin(0.5);
-        this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, 'press-space-ES').setOrigin(0.5), 0.08, height / 2.2);
+        this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, `${startText}ES`).setOrigin(0.5), 0.08, height / 2.2);
 
         // 🌐 Resize handling
         this.scale.addListener('resize', (gameSize) => {
@@ -64,6 +65,7 @@ export default class Menu extends Phaser.Scene {
     }
 
     update() {
+        this.startButton.element.text = this.sys.game.device.os.desktop ? 'Pulsa espacio para comenzar' : 'Toca para comenzar'
         // 🎞️ Parallax
         this.backgroundLayers[1].tilePositionX += 0.02;
         this.backgroundLayers[2].tilePositionX += 0.04;

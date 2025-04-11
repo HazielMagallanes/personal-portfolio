@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx",
+    "activeFile": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
     "expandedProjectPaths": [
     ],
-    "file.lastUsedOpenFilter": "Todos los archivos (*)",
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInDock": 8,
@@ -33,11 +33,11 @@
             "scaleInEditor": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
-            "scale": 5.5,
+            "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 93.0909090909091,
-                "y": 160.8181818181818
+                "x": 586.75,
+                "y": 115.625
             }
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
@@ -46,28 +46,32 @@
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#constraints": {
             "scaleInDock": 1
         },
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#furniture": {
+            "scaleInDock": 3
+        },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 2
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house_structure": {
-            "scaleInDock": 4
+            "scaleInDock": 3,
+            "scaleInEditor": 11
         }
     },
-    "last.exportedFilePath": "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map",
+    "last.exportedFilePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map",
     "last.imagePath": "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/assets/sprites/tilesets/house",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.orientation": null,
     "openFiles": [
-        "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx"
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx"
     ],
     "project": "portfolio.tiled-project",
     "recentFiles": [
-        "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx",
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
+        "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx",
         "House.tsx"
     ],
     "resizeMap.removeObjects": false,

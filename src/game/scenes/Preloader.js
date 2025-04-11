@@ -5,6 +5,8 @@ export default class Preloader extends Phaser.Scene {
 
     preload() {
         this.load.path = './src/game/assets/'
+        // UI
+        this.load.image('UI', './sprites/UI/UI.png');
         // Player
         this.load.atlas('player', './sprites/player/hazu.png', './sprites/player/hazu.json');
         //🏞️ Menu Background
@@ -21,8 +23,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('city-5', './placeholder/EDITED/Cities/cityPOT5.png');
         // World map
         this.load.tilemapTiledJSON('world', '../map/world.json');
-        this.load.image('house-structure-tiles', './sprites/tilesets/extruded/house/house_structure.png');
-        this.load.image('house-furniture-tiles', './sprites/tilesets/extruded/house/house_furniture.png');
+        this.load.image('house-structure-tiles', './sprites/tilesets/fixed/house/house_structure.png');
+        this.load.image('house-furniture-tiles', './sprites/tilesets/fixed/house/house_furniture.png');
         this.load.image('constraints-tileset', './sprites/tilesets/constraints.png');
         // Fonts
         this.load.font('pixelify-sans-bold', './font/Pixelify-sans/static/PixelifySans-Bold.ttf', 'truetype');

@@ -9,8 +9,9 @@ export default class World extends Phaser.Scene {
     create() {
         // DEBUGGING TOOLS
         this.fpsText = document.getElementById("fps")
+        const {width, height} = this.scale;;
 
-        const {width, height} = this.scale;
+
         // Process map
         const map = this.make.tilemap({ key: 'world' })
         map.addTilesetImage('house_structure', 'house-structure-tiles', 18, 18, 1, 1);
@@ -45,6 +46,7 @@ export default class World extends Phaser.Scene {
         // Draw map
         map.createLayer('BG', 'house_structure', 0, 0);
         map.createLayer('Furniture', 'furniture', 0, 0);
+        map.createLayer('Furniture2', 'furniture', 256, -3);
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
@@ -52,7 +54,7 @@ export default class World extends Phaser.Scene {
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setFollowOffset((width / 4) * -1, height / 5);
         this.cameras.main.useBounds = false;
-        this.physics.world.setBounds(48, 0, 10000, playerSpawn.y + 10);
+        this.physics.world.setBounds(16 * 7, 0, 10000, playerSpawn.y + 10);
 
 
         this.keys = this.input.keyboard.addKeys({
@@ -62,6 +64,9 @@ export default class World extends Phaser.Scene {
         });
 
         //this.cameras.main.setBounds(-300, 0, 1600, 1200);
+
+        // DRAW UI
+        this.add.sprite(16 * 14, 16 * 7.5, 'UI').setInteractive().addListener('onmousedown', () => {console.log("CLICK LISTENED")})
     }
 
     update() {
