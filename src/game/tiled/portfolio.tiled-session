@@ -33,11 +33,11 @@
             "scaleInEditor": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
-            "scale": 4,
-            "selectedLayer": 0,
+            "scale": 5.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 586.75,
-                "y": 115.625
+                "x": 647.4545454545455,
+                "y": 72.81818181818181
             }
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
@@ -47,7 +47,8 @@
             "scaleInDock": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#furniture": {
-            "scaleInDock": 3
+            "scaleInDock": 3,
+            "scaleInEditor": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house": {
             "dynamicWrapping": false,
@@ -56,7 +57,7 @@
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#house_structure": {
             "scaleInDock": 3,
-            "scaleInEditor": 11
+            "scaleInEditor": 3
         }
     },
     "last.exportedFilePath": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map",

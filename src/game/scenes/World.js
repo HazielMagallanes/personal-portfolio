@@ -66,21 +66,26 @@ export default class World extends Phaser.Scene {
         //this.cameras.main.setBounds(-300, 0, 1600, 1200);
 
         // DRAW UI
-        this.mobileControls = {
-            left: this.add.sprite(16 * 2, height, 'UI').setFlipX(true).setInteractive()
-            .on('pointerover', () => {this.player.direction = -1})
-            .on('pointerout', () => {this.player.direction = 0}),
-            right: this.add.sprite(16 * 3, height, 'UI').setInteractive()
-            .on('pointerover', () => {this.player.direction = 1})
-            .on('pointerout', () => {this.player.direction = 0})
+        if(!this.sys.game.device.os.desktop){
+            this.mobileControls = {
+                left: this.add.sprite(16 * 2, height, 'UI').setFlipX(true).setInteractive()
+                .on('pointerover', () => {this.player.direction = -1})
+                .on('pointerout', () => {this.player.direction = 0}),
+                right: this.add.sprite(16 * 3, height, 'UI').setInteractive()
+                .on('pointerover', () => {this.player.direction = 1})
+                .on('pointerout', () => {this.player.direction = 0})
+            }
         }
     }
 
     update() {
         this.player.update();
         // UI
-        this.mobileControls.left.setX(16 * 2 + this.cameras.main.scrollX);
-        this.mobileControls.right.setX(this.mobileControls.left.x + 16);
+        if(!this.sys.game.device.os.desktop){
+            // Mobile controls
+            this.mobileControls.left.setX(16 * 2 + this.cameras.main.scrollX);
+            this.mobileControls.right.setX(this.mobileControls.left.x + 16);
+        }
         // Parallax layers have to stay fixed to player's X position.
         this.parallaxLayers.forEach((layer) => {
             layer.setX(this.cameras.main.scrollX - 16);
@@ -111,7 +116,6 @@ export default class World extends Phaser.Scene {
                 this.parallaxLayers[3].tilePositionX -= 0.16
                 this.parallaxLayers[4].tilePositionX -= 0.12   
             }
-
         }
     }
 }

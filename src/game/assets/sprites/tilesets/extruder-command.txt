@@ -1,0 +1,2 @@
+tile-extruder --tileWidth 16 --tileHeight 16 --margin 1 --spacing 1 --input src\game\assets\sprites\tilesets\original\house\house_structure.png --output Q:\Codigos\paginas\portfolio\personal-portfolio\src\game\assets\sprites\tilesets\fixed\house\house_structure.png
+tile-extruder --tileWidth 16 --tileHeight 16 --margin 1 --spacing 1 --input src\game\assets\sprites\tilesets\original\house\house_furniture.png --output Q:\Codigos\paginas\portfolio\personal-portfolio\src\game\assets\sprites\tilesets\fixed\house\house_furniture.png
