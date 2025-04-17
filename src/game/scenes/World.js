@@ -50,7 +50,7 @@ export default class World extends Phaser.Scene {
     
         // Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
-
+        map.createLayer('Overplayer', 'house_structure', 1024, 0);
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setFollowOffset((width / 4) * -1, height / 5);
         this.cameras.main.useBounds = false;

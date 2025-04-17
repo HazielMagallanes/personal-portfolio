@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
+    "activeFile": "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -13,19 +13,22 @@
             "scaleInEditor": 5.5
         },
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx": {
-            "scale": 4,
+            "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 92.625,
-                "y": 130.875
+                "x": 190.27272727272725,
+                "y": 88
             }
         },
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx#constraints": {
             "scaleInDock": 1
         },
+        "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx#furniture": {
+            "scaleInDock": 3
+        },
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx#house_structure": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 2
         },
         "House.tsx": {
             "dynamicWrapping": true,
@@ -67,12 +70,12 @@
     "map.lastUsedFormat": "tmx",
     "map.orientation": null,
     "openFiles": [
-        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx"
+        "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx"
     ],
     "project": "portfolio.tiled-project",
     "recentFiles": [
-        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx",
+        "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx",
         "House.tsx"
     ],
     "resizeMap.removeObjects": false,
