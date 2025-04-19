@@ -1,19 +1,20 @@
 import Interactable from "./Interactable";
 
-export default class Computer extends Interactable {
+export default class Retrocomputer extends Interactable {
     constructor(scene, x, y) {
-        super(scene, x, y, 'interactable-sheet', 'computer01');
-        this.setCrop(1, 1, 18, 18);
+        super(scene, x, y, 'interactable-sheet', 'computer01', false);
+        this.setCrop(2, 1, 18, 18);
         // 🛡️ Interactable area box
-        this.interactableArea.setSize(36, 46);
-        this.interactableArea.setOffset(-8, -2);
+        this.interactableArea.setSize(48, 16);
+        this.interactableArea.setOffset(-10, -8);
         this.interactableArea.setVisible(true);
         // 🎞️ Animations
         this.createAnimations(scene);
+        this.anims.play('computer', true);
         // Computer behavior
         this.isOpen = false;
     }
-    
+
     interact(){
         this.toggleWindow();
     }
@@ -21,12 +22,8 @@ export default class Computer extends Interactable {
     toggleWindow(){
         if(this.isOpen){
             this.isOpen = false;
-            this.body.setEnable(true);
-            this.anims.playReverse('open', true);
         }else{
-            this.anims.play('open', true);
             this.isOpen = true;
-            this.body.setEnable(false);
         }
     }
 
@@ -43,5 +40,13 @@ export default class Computer extends Interactable {
             frameRate: 10,
             repeat: 0
         });
+    }
+
+    update(){
+        this.setCrop(2, 1, 18, 18);
+        if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
+            console.log('overlap');
+            this.setCrop(21, 1, 19, 19);
+        }
     }
 }

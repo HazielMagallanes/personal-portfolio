@@ -5,7 +5,7 @@ export default class Door extends Interactable {
         super(scene, x, y, 'interactable-sheet', 'door01');
         // 🛡️ Hitbox
         this.setSize(5, this.height);
-        this.setOffset(8, 0);
+        this.setOffset(8.5, 0);
         this.setImmovable(true);
         // 🛡️ Interactable area box
         this.interactableArea.setSize(36, 46);

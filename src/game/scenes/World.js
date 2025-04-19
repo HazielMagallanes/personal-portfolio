@@ -1,6 +1,7 @@
 import { Math } from 'phaser';
 import Player from './player/Player.js';
 import Door from './interactable/Door.js';
+import Retrocomputer from './interactable/Retrocomputer.js';
 
 export default class World extends Phaser.Scene {
     constructor() {
@@ -25,6 +26,8 @@ export default class World extends Phaser.Scene {
         // 🚀 Player spawn location constraint
         const playerSpawn = new Math.Vector2(0, 0);
         this.doors = [];
+        this.computers = [];
+
         constraintsLayer.forEachTile(tile => {
             if (![79, 80, 81].includes(tile.index)) return;
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
@@ -42,6 +45,8 @@ export default class World extends Phaser.Scene {
             }
             if(tile.index === 81){
                 // 💻 Spawn computer object
+                this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) + 26));
+                this.computers[this.computers.length - 1].create();
                 return;
             }
         });
@@ -63,6 +68,9 @@ export default class World extends Phaser.Scene {
         this.doors.forEach(door => {
             door.setAbove(house);
             this.physics.add.collider(this.player, door);
+        });
+        this.computers.forEach(computer => {
+            computer.setAbove(house);
         });
         map.createLayer('Overplayer', 'house_structure', 512, 0);
         this.cameras.main.startFollow(this.player);
@@ -92,6 +100,9 @@ export default class World extends Phaser.Scene {
 
     update() {
         this.player.update();
+        this.computers.forEach(computer => {
+            computer.update();
+        });
         // 🖼️ UI
         if(!this.sys.game.device.os.desktop){
             // 📱 Mobile controls
