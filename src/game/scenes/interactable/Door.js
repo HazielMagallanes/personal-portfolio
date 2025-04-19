@@ -1,31 +1,23 @@
-export default class Door extends Phaser.Physics.Arcade.Sprite {
+import Interactable from "./Interactable";
+
+export default class Door extends Interactable {
     constructor(scene, x, y) {
         super(scene, x, y, 'interactable-sheet', 'door01');
-        scene.add.existing(this);
         // 🛡️ Hitbox
-        scene.physics.add.existing(this);
         this.setSize(5, this.height);
         this.setOffset(8, 0);
         this.setImmovable(true);
         // 🛡️ Interactable area box
-        this.interactableArea = new Phaser.Physics.Arcade.Sprite(scene, x, y, '', '');
-        scene.physics.add.existing(this.interactableArea);
         this.interactableArea.setSize(36, 46);
         this.interactableArea.setOffset(-8, -2);
-        this.interactableArea.setVisible(true);
         // 🎞️ Animations
         this.createAnimations(scene);
         // Door behavior
         this.isOpen = false;
-        
     }
 
-    create(){
-        this.scene.input.keyboard.on('keyup-SPACE', () => {
-            if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
-                this.toggleDoor();
-            }
-        });
+    interact(){
+        this.toggleDoor();
     }
 
     toggleDoor(){
@@ -54,8 +46,4 @@ export default class Door extends Phaser.Physics.Arcade.Sprite {
             repeat: 0
         });
     }
-    update() {
-
-    }
-
 }

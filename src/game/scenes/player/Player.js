@@ -24,6 +24,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     createAnimations(scene) {
+        if(scene.anims.exists('walk')) return;
         scene.anims.create({
             key: 'walk',
             frames: scene.anims.generateFrameNames('player', {

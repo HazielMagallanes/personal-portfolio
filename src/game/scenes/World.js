@@ -92,9 +92,6 @@ export default class World extends Phaser.Scene {
 
     update() {
         this.player.update();
-        this.doors.forEach(door => {
-            door.update();
-        });
         // 🖼️ UI
         if(!this.sys.game.device.os.desktop){
             // 📱 Mobile controls
