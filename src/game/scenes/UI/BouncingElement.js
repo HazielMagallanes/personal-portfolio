@@ -1,11 +1,11 @@
-export default class BouncingElement{
+export default class BouncingElement {
     constructor(element, bounceSpeed, bounceCap) {
         this.element = element;
         this.originalPos = element.y;
         this.bounceSpeed = bounceSpeed;
         this.bounceCap = bounceCap;
     }
-    // 📝 Getters and setters
+    // 📝 Getters and setters ✨
     getElement() {
         return this.element;
     }
@@ -27,11 +27,11 @@ export default class BouncingElement{
         this.bounceCap = bounceCap;
     }
 
-    // Instance methods
+    // 🔄 Instance methods 🏀
     bounce() {
-        // Bounce up and down in loop
+        // 🔼🔽 Bounce up and down in loop
         if ((this.element.y < this.bounceCap) || (this.bounceSpeed < 0 && this.element.y > this.originalPos)) {
-            // Change direction
+            // 🔄 Change direction
             this.bounceSpeed *= -1;
         }
         this.element.setY(this.element.y - this.bounceSpeed);

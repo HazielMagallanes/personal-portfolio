@@ -4,16 +4,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        // Hitbox
+        // 🛡️ Hitbox
         this.setSize(this.width / 3, this.height / 2);
         this.setOffset(this.width / 3, this.height / 3); 
         this.setCollideWorldBounds(true);
 
-        // Stats
+        // 📊 Stats
         this.speed = 200;
         this.direction = 0;
         this.isMoving = false;
-        // Anims
+        // 🎞️ Animations
         this.createAnimations(scene);
         this.keys = scene.input.keyboard.addKeys({
             left: 'A',
@@ -41,19 +41,20 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.isMoving = false;
         this.setVelocity(0);
         if (this.direction == -1) {
+            // ⬅️ Move left
             this.speed = this.speed > 0 ? this.speed * -1 : this.speed;
             this.setVelocityX(this.speed);
             this.setFlipX(true);
             this.anims.play('walk', true);
             this.isMoving = true;
         } else if (this.direction == 1) {
+            // ➡️ Move right
             this.speed = this.speed < 0 ? this.speed * -1 : this.speed;
             this.setVelocityX(this.speed);
             this.setFlipX(false);
             this.anims.play('walk', true);
             this.isMoving = true;
         }
-
         if (!this.isMoving) {
             this.anims.stop();
             this.setFrame('walk01');

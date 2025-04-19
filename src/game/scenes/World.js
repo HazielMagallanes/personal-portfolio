@@ -1,5 +1,6 @@
-import { DOWN, Math, RIGHT } from 'phaser';
+import { Math } from 'phaser';
 import Player from './player/Player.js';
+import Door from './interactable/Door.js';
 
 export default class World extends Phaser.Scene {
     constructor() {
@@ -7,65 +8,75 @@ export default class World extends Phaser.Scene {
     }
 
     create() {
-        // DEBUGGING TOOLS
+        // 🛠️ DEBUGGING TOOLS
         this.fpsText = document.getElementById("fps")
         const {width, height} = this.scale;;
 
-
-        // Process map
+        // 🗺️ Process map
         const map = this.make.tilemap({ key: 'world' })
         map.addTilesetImage('house_structure', 'house-structure-tiles', 18, 18, 1, 1);
         map.addTilesetImage('furniture', 'house-furniture-tiles', 18, 18, 1, 1);
-        const constraints = map.addTilesetImage('constraints', 'constraints-tileset');
+        const constraints = map.addTilesetImage('constraints', 'constraints-tileset', 16, 16, 1, 1);
 
-        // Process map constraints
+        // 🚧 Process map constraints
         const constraintsLayer = map.createLayer('Constraints', constraints, 0, 0);
         constraintsLayer.visible = false;
 
-        // Player spawn location constraint
-        const playerSpawn = new Math.Vector2(0, 0)
+        // 🚀 Player spawn location constraint
+        const playerSpawn = new Math.Vector2(0, 0);
+        const doors = [];
         constraintsLayer.forEachTile(tile => {
-            if (tile.index != 1 ) return;
-            // Convert tile coordinates to world coordinates
+            if (![79, 80, 81].includes(tile.index)) return;
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
-            playerSpawn.x = worldPos.x * constraintsLayer.scaleX;
-            playerSpawn.y = (worldPos.y * constraintsLayer.scaleY) + 7;
+            if(tile.index === 79){
+                // 🧍 Define player spawn location
+                playerSpawn.x = worldPos.x * constraintsLayer.scaleX;
+                playerSpawn.y = (worldPos.y * constraintsLayer.scaleY) + 7;
+                return;
+            }
+            if(tile.index === 80){
+                // 🚪 Spawn door object
+                doors.push(new Door(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) - 7));
+                return;
+            }
+            if(tile.index === 81){
+                // 💻 Spawn computer object
+                return;
+            }
         });
 
         // 🏞️ BG Layers
-        // TODO: Change this placeholders for new sprites with correct size
-        this.parallaxLayers = 
-        [
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-1').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-2').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-3').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-4').setOrigin(0, 0).setTileScale(0.5, 0.4),
-            this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, 'city-5').setOrigin(0, 0).setTileScale(0.5, 0.4),
-        ];
+        // 📝 TODO: Change this placeholders for new sprites with correct size
+        this.parallaxLayers = [];
+        for(let i = 1; i < 6; i++){
+            this.parallaxLayers.push(this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, `city-${i}`).setOrigin(0, 0).setTileScale(0.5, 0.4))
+        }
 
-        // Draw map
-        map.createLayer('BG', 'house_structure', 0, 0);
+        // 🖌️ Draw map
+        const house = map.createLayer('BG', 'house_structure', 0, 0);
         map.createLayer('Furniture', 'furniture', 0, 1);
-        map.createLayer('Furniture2', 'furniture', 256, -2);
+        map.createLayer('Furniture2', 'furniture', 0, -2);
     
-        // Player
+        // 🧍 Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
-        map.createLayer('Overplayer', 'house_structure', 1024, 0);
+        doors.forEach(door => {
+            door.setAbove(house);
+            this.physics.add.collider(this.player, door);
+        });
+        map.createLayer('Overplayer', 'house_structure', 512, 0);
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setFollowOffset((width / 4) * -1, height / 5);
         this.cameras.main.useBounds = false;
         this.physics.world.setBounds(16 * 7, 0, 10000, playerSpawn.y + 10);
 
-
+        // 🎮 Input keys
         this.keys = this.input.keyboard.addKeys({
             up: 'up',
             down: 'down',
             space: 'space'
         });
 
-        //this.cameras.main.setBounds(-300, 0, 1600, 1200);
-
-        // DRAW UI
+        // 🖼️ DRAW UI
         if(!this.sys.game.device.os.desktop){
             this.mobileControls = {
                 left: this.add.sprite(16 * 2, height, 'UI').setFlipX(true).setInteractive()
@@ -80,17 +91,17 @@ export default class World extends Phaser.Scene {
 
     update() {
         this.player.update();
-        // UI
+        // 🖼️ UI
         if(!this.sys.game.device.os.desktop){
-            // Mobile controls
+            // 📱 Mobile controls
             this.mobileControls.left.setX(16 * 2 + this.cameras.main.scrollX);
             this.mobileControls.right.setX(this.mobileControls.left.x + 16);
         }
-        // Parallax layers have to stay fixed to player's X position.
+        // 🏞️ Parallax layers have to stay fixed to player's X position.
         this.parallaxLayers.forEach((layer) => {
             layer.setX(this.cameras.main.scrollX - 16);
         })
-        // DEBUGGING TOOLS
+        // 🛠️ DEBUGGING TOOLS
         const {up, down, space} = this.keys;
         if(down.isDown){
             this.cameras.main.setZoom(this.cameras.main.zoomX * 0.9);

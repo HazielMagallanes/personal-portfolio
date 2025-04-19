@@ -4,10 +4,9 @@ export default class Menu extends Phaser.Scene {
     constructor() {
         super('Menu');
     }
-    // TODO:  ADD MORE EMOJIS; THEY LOOK AWESOME
     create() {
         const { width, height } = this.scale;
-        // 🏞️ Background layers
+        // 🏞️🌥️ Background layers
         this.backgroundLayers = 
         [
             this.add.tileSprite(0, 0, width, height, 'sky').setOrigin(0, 0),
@@ -22,13 +21,13 @@ export default class Menu extends Phaser.Scene {
         this.scaleBackground();
         this.scale.lockOrientation("landscape");
 
-        // 📝 UI elements
+        // 📝📱 UI elements
         var startText = this.sys.game.device.os.desktop ? 'press-space-' : 'touch-screen-'
-        // Use pregenerated text to avoid problems with older gpus and integrated graphics (Happened on one of my computers LOL).
+        // 🖼️ Use pregenerated text to avoid problems with older GPUs and integrated graphics (Happened on one of my computers LOL).
         this.gameTitle = this.add.sprite(width / 2, height / 4, 'title-text').setOrigin(0.5);
         this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, `${startText}ES`).setOrigin(0.5), 0.08, height / 2.2);
 
-        // 🌐 Resize handling
+        // 🌐📏 Resize handling
         this.scale.addListener('resize', (gameSize) => {
             const { width, height } = gameSize;
             this.recenterMenu(width, height);
@@ -38,17 +37,17 @@ export default class Menu extends Phaser.Scene {
                 this.scene.start('World');
             }
         })
-        // Interactivity
+        // 🎮 Interactivity
         this.input.keyboard.on('keyup-SPACE', () => {
             this.scene.start('World');
         })
     }
 
     recenterMenu(width, height) {
-        // Texts
+        // 📝🔄 Texts
         this.gameTitle.setPosition(width / 2, height / 4);
         this.startButton.element.setPosition(width / 2, height / 2);
-        // Parallax Layers
+        // 🏞️🔄 Parallax Layers
         this.backgroundLayers.forEach((layer) =>{
             layer.setSize(width, height);
         })
@@ -63,7 +62,7 @@ export default class Menu extends Phaser.Scene {
     }
 
     scaleBackground() {
-        // 🔄 Resize all background layers to fit screen
+        // 🔄📏 Resize all background layers to fit screen
         this.backgroundLayers.forEach((layer) => {
             layer.setScale(1, 0.5);
         })
@@ -71,19 +70,14 @@ export default class Menu extends Phaser.Scene {
     }
 
     update() {
-        // 🎞️ Parallax
+        // 🎞️🌌 Parallax
         this.backgroundLayers[1].tilePositionX += 0.02;
         this.backgroundLayers[2].tilePositionX += 0.04;
         this.backgroundLayers[3].tilePositionX += 0.16;
         this.backgroundLayers[4].tilePositionX += 0.16;
         this.backgroundLayers[5].tilePositionX += 0.08;
         this.backgroundLayers[6].tilePositionX += 0.12;
-        // Title animation 
+        // 🕹️🎨 Title animation 
         this.startButton.bounce();
-
-        // Handle smartphones
-/*         if(this.scale.orientation.toString() != "landscape-primary"){
-            
-        } */
     }
 }
