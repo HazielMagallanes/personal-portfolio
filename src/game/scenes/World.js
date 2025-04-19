@@ -24,7 +24,7 @@ export default class World extends Phaser.Scene {
 
         // 🚀 Player spawn location constraint
         const playerSpawn = new Math.Vector2(0, 0);
-        const doors = [];
+        this.doors = [];
         constraintsLayer.forEachTile(tile => {
             if (![79, 80, 81].includes(tile.index)) return;
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
@@ -36,7 +36,8 @@ export default class World extends Phaser.Scene {
             }
             if(tile.index === 80){
                 // 🚪 Spawn door object
-                doors.push(new Door(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) - 7));
+                this.doors.push(new Door(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) - 7));
+                this.doors[this.doors.length - 1].create();
                 return;
             }
             if(tile.index === 81){
@@ -59,7 +60,7 @@ export default class World extends Phaser.Scene {
     
         // 🧍 Player
         this.player = new Player(this, playerSpawn.x, playerSpawn.y);
-        doors.forEach(door => {
+        this.doors.forEach(door => {
             door.setAbove(house);
             this.physics.add.collider(this.player, door);
         });
@@ -91,6 +92,9 @@ export default class World extends Phaser.Scene {
 
     update() {
         this.player.update();
+        this.doors.forEach(door => {
+            door.update();
+        });
         // 🖼️ UI
         if(!this.sys.game.device.os.desktop){
             // 📱 Mobile controls

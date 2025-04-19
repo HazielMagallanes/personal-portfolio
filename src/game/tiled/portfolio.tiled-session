@@ -10,7 +10,7 @@
     "fileStates": {
         "": {
             "scaleInDock": 1,
-            "scaleInEditor": 5.5
+            "scaleInEditor": 1
         },
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx": {
             "scale": 5.5,
@@ -37,17 +37,17 @@
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
             "scale": 4,
-            "selectedLayer": 1,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 197,
-                "y": 91.125
+                "x": 198.75,
+                "y": 121.625
             }
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
             "dynamicWrapping": true
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#constraints": {
-            "scaleInDock": 1,
+            "scaleInDock": 8,
             "scaleInEditor": 1
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#furniture": {

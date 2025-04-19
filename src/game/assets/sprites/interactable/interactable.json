@@ -1,5 +1,5 @@
 { "frames": {
-   "{door01": {
+   "door01": {
     "frame": { "x": 1, "y": 1, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{door02": {
+   "door02": {
     "frame": { "x": 34, "y": 1, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +15,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{door03": {
+   "door03": {
     "frame": { "x": 67, "y": 1, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -23,7 +23,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{door04": {
+   "door04": {
     "frame": { "x": 67, "y": 1, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -31,7 +31,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{computer01": {
+   "computer01": {
     "frame": { "x": 1, "y": 50, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -39,7 +39,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{computer02": {
+   "computer02": {
     "frame": { "x": 34, "y": 50, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -47,7 +47,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{computer03": {
+   "computer03": {
     "frame": { "x": 67, "y": 50, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
@@ -55,7 +55,7 @@
     "sourceSize": { "w": 34, "h": 50 },
     "duration": 200
    },
-   "{computer04": {
+   "computer04": {
     "frame": { "x": 100, "y": 50, "w": 34, "h": 50 },
     "rotated": false,
     "trimmed": false,
