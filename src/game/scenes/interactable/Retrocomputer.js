@@ -2,15 +2,14 @@ import Interactable from "./Interactable";
 
 export default class Retrocomputer extends Interactable {
     constructor(scene, x, y) {
-        super(scene, x, y, 'interactable-sheet', 'computer01', false);
-        this.setCrop(2, 1, 18, 18);
+        super(scene, x, y + 9, 'retrocomputer', 'computer01', false);
         // 🛡️ Interactable area box
         this.interactableArea.setSize(48, 16);
-        this.interactableArea.setOffset(-10, -8);
+        this.interactableArea.setOffset(-10, 8);
         this.interactableArea.setVisible(true);
         // 🎞️ Animations
         this.createAnimations(scene);
-        this.anims.play('computer', true);
+        this.anims.play('computershiftingcolors', true);
         // Computer behavior
         this.isOpen = false;
     }
@@ -28,25 +27,39 @@ export default class Retrocomputer extends Interactable {
     }
 
     createAnimations(scene) {
-        if(scene.anims.exists('computer')) return;
+        if(scene.anims.exists('computershiftingcolors')) return;
         scene.anims.create({
-            key: 'computer',
-            frames: scene.anims.generateFrameNames('interactable-sheet', {
+            key: 'computershiftingcolors',
+            frames: scene.anims.generateFrameNames('retrocomputer', {
                 prefix: 'computer',
                 start: 1,
                 end: 3,
                 zeroPad: 2
             }),
-            frameRate: 10,
-            repeat: 0
+            frameRate: 6,
+            repeat: -1
+        });
+        scene.anims.create({
+            key: 'computershiftingcolors-outlined',
+            frames: scene.anims.generateFrameNames('retrocomputer', {
+                prefix: 'computer_outline',
+                start: 1,
+                end: 3,
+                zeroPad: 2
+            }),
+            frameRate: 6,
+            repeat: -1
         });
     }
 
     update(){
-        this.setCrop(2, 1, 18, 18);
+        super.update();
         if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
-            console.log('overlap');
-            this.setCrop(21, 1, 19, 19);
+            // 🖱️ Show object is interactable
+            this.anims.play('computershiftingcolors-outlined', true);
+        }else{         
+            // Remove outline
+            this.anims.play('computershiftingcolors', true);
         }
     }
 }

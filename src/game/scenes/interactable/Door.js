@@ -2,7 +2,7 @@ import Interactable from "./Interactable";
 
 export default class Door extends Interactable {
     constructor(scene, x, y) {
-        super(scene, x, y, 'interactable-sheet', 'door01');
+        super(scene, x, y, 'door', 'door01');
         // 🛡️ Hitbox
         this.setSize(5, this.height);
         this.setOffset(8.5, 0);
@@ -36,7 +36,7 @@ export default class Door extends Interactable {
         if(scene.anims.exists('open')) return;
         scene.anims.create({
             key: 'open',
-            frames: scene.anims.generateFrameNames('interactable-sheet', {
+            frames: scene.anims.generateFrameNames('door', {
                 prefix: 'door',
                 start: 1,
                 end: 3,
@@ -45,5 +45,9 @@ export default class Door extends Interactable {
             frameRate: 10,
             repeat: 0
         });
+    }
+
+    update(){
+        super.update();
     }
 }

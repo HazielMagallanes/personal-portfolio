@@ -19,4 +19,18 @@ export default class Interactable extends Phaser.Physics.Arcade.Sprite {
 
     interact(){
     }
+    update(){
+        // 🖱️ Show interactable button or signal.
+        if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
+            // PC
+            if(this.scene.sys.game.device.os.desktop){
+                this.scene.spacebarSign.setVisible(true);
+                if(this.scene.player.x <= this.getBottomCenter().x){
+                    this.scene.spacebarSign.setPosition(this.interactableArea.getBottomCenter().x + 40, this.interactableArea.getTopCenter().y);
+                }else{
+                    this.scene.spacebarSign.setPosition(this.interactableArea.getBottomCenter().x - 40, this.interactableArea.getTopCenter().y);
+                }
+            }
+        }
+    }
 }

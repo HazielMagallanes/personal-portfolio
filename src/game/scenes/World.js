@@ -2,6 +2,7 @@ import { Math } from 'phaser';
 import Player from './player/Player.js';
 import Door from './interactable/Door.js';
 import Retrocomputer from './interactable/Retrocomputer.js';
+import SpacebarSign from './UI/SpacebarSign.js';
 
 export default class World extends Phaser.Scene {
     constructor() {
@@ -27,7 +28,7 @@ export default class World extends Phaser.Scene {
         const playerSpawn = new Math.Vector2(0, 0);
         this.doors = [];
         this.computers = [];
-
+        this.interactables = [this.doors, this.computers];
         constraintsLayer.forEachTile(tile => {
             if (![79, 80, 81].includes(tile.index)) return;
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
@@ -45,7 +46,7 @@ export default class World extends Phaser.Scene {
             }
             if(tile.index === 81){
                 // 💻 Spawn computer object
-                this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) + 26));
+                this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY)));
                 this.computers[this.computers.length - 1].create();
                 return;
             }
@@ -86,12 +87,15 @@ export default class World extends Phaser.Scene {
         });
 
         // 🖼️ DRAW UI
+        if(this.sys.game.device.os.desktop){
+            this.spacebarSign = new SpacebarSign(this, 0, 0).setDepth(1).setOrigin(0.5, 0.5);
+        }
         if(!this.sys.game.device.os.desktop){
             this.mobileControls = {
-                left: this.add.sprite(16 * 2, height, 'UI').setFlipX(true).setInteractive()
+                left: this.add.sprite(16 * 2, height, 'UI', 'mobile01').setDepth(1).setInteractive()
                 .on('pointerover', () => {this.player.direction = -1})
                 .on('pointerout', () => {this.player.direction = 0}),
-                right: this.add.sprite(16 * 3, height, 'UI').setInteractive()
+                right: this.add.sprite(16 * 3, height, 'UI', 'mobile01').setDepth(1).setFlipX(true).setInteractive()
                 .on('pointerover', () => {this.player.direction = 1})
                 .on('pointerout', () => {this.player.direction = 0})
             }
@@ -100,15 +104,18 @@ export default class World extends Phaser.Scene {
 
     update() {
         this.player.update();
-        this.computers.forEach(computer => {
-            computer.update();
-        });
         // 🖼️ UI
         if(!this.sys.game.device.os.desktop){
             // 📱 Mobile controls
             this.mobileControls.left.setX(16 * 2 + this.cameras.main.scrollX);
             this.mobileControls.right.setX(this.mobileControls.left.x + 16);
-        }
+        }else this.spacebarSign.setVisible(false);
+        
+        // Update all interactables
+        this.interactables.forEach(interactableList => {
+            interactableList.forEach(interactable => {interactable.update()});
+        });
+
         // 🏞️ Parallax layers have to stay fixed to player's X position.
         this.parallaxLayers.forEach((layer) => {
             layer.setX(this.cameras.main.scrollX - 16);
