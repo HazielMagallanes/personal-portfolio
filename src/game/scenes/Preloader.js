@@ -1,3 +1,5 @@
+import langs from "./UI/LangUtil";
+
 export default class Preloader extends Phaser.Scene {
     constructor() {
         super('Preloader');
@@ -36,10 +38,20 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('title-text', './pregen_text/title.bmp');
         this.load.image('press-space-ES', './pregen_text/press-space-ES.bmp');
         this.load.image('touch-screen-ES', './pregen_text/touch-screen-ES.bmp');
+        // Languages
+        this.load.json('en-US', './lang/en-US.json');
+        this.load.json('es-ES', './lang/es-ES.json');
         
     }
 
     create() {
+        // Load language data from JSON file
+        langs.langData = {
+            'en-US': this.cache.json.get('en-US'),
+            'es-ES': this.cache.json.get('es-ES')
+        }
+        langs.setLang('es-ES')        
+        
         this.scene.start('Menu');
     }
 }

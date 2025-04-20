@@ -1,0 +1,43 @@
+{
+    "retro_computer": {
+        "analysis": {
+            "title" : "ANALISIS",
+            "objective_name": "Sujeto: Haziel Magallanes, 18 años.",
+            "objective_location": "Localización: Argentina, Buenos Aires, Baigorrita.",
+            "objective_languages": "Idiomas: Español (Nativo), Inglés (Adquirido).",
+            "objective_skills": "Informe de Habilidades:\nNuestros datos parecen indicar que es un excelente programador, muy creativo además. Si fuera una empresa estaría encantado de contratarlo.Nuestros espias informan que domina principalmente Java pero también es muy proficiente con Python y JavaScript y no es ningun ajeno a C++.\nEn la siguiente página se exploran más a detalle sus habilidades."
+        },
+        "skills":{
+            "title" : "HABILIDADES",
+            "1": "El objetivo tiene un dominio amplio sobre Java, es el lenguaje en el que más cómodo se siente.",
+            "2": "El objetivo tiene experiencia con Godot, Phaser (Sobre el cual esta hecho este juego), Pygame y GameMaker.",
+            "3": "El objetivo hace uso tanto de React como de JS Vanilla para Frontend.",
+            "4": "El objetivo utiliza Node + Express para el Backend.",
+            "5": "El objetivo no es ajeno al diseño gráfico, de ser requerido es capaz de utilizar Figma y Aseprite.",
+            "6": "El objetivo tiene un conocimiento general sobre C++ en busca de ser profundizado. Principalmente ha experimentado con juegos pequeños."
+        },
+        "experiences": {
+            "title" : "Experiencias previas",
+            "preview_text": "Proyectos",
+            "page1":{
+                "1": "Web de Voto electrónico Premios Lola 2024 (Argentina, Buenos Aires, Junín). Fullstack, tecnologías utilizadas: React, Express, NodeJS, MySQL, Firebase.",
+                "2": "Librería de menús automáticos para aplicaciones de terminal en Java.",
+                "3": "Este portfolio, hecho en Phaser 3.",
+                "4": "4 meses como Soporte Técnico voluntario en QloxHost (Hosting de VPS gratuito que cerró) en el año 2022.",
+                "5": "Desarrollo de propuesta de sitio web institucional estático para Escuela Técnica 2 (Argentina, Buenos Aires, Junín).",
+                "6": "Desarrollo de Scripts para servidores de Minecraft.",
+                "7": "Videojuegos no publicados hechos en Godot 4 y Pygame.",
+                "8": "Más en la siguiente página."
+            },
+            "page2":{
+                "1": "Streamer y YouTuber en el pasado, donde desarrollo una buena comunicación.",
+                "2": "Creación de mini consola de videojuegos retro en Arduino."
+            }
+        },
+        "final": {
+            "text": "Esta es toda la información recopilada por el ordenador.\nPara más información constantemente actualizada y una visión mas detallada de los proyectos realizados por el objetivo, dirigete a la biblioteca...",
+            "press-scape": "(Presiona ESC para cerrar el ordenador).",
+            "touch-outside": "(Toca fuera del ordenador para cerrarlo)."
+        }
+    }
+}

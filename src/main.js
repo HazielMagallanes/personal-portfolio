@@ -16,6 +16,9 @@ const config = {
     backgroundColor: '#0079d6',
     physics: {
         default: 'arcade',
+        arcade: {
+            debug: false,
+        },
     },
     pixelArt: true,
     scene: [Preloader, Menu, World]

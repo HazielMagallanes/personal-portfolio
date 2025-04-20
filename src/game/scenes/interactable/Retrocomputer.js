@@ -1,5 +1,5 @@
 import Interactable from "./Interactable";
-
+import langs from "../UI/LangUtil";
 export default class Retrocomputer extends Interactable {
     constructor(scene, x, y) {
         super(scene, x, y + 9, 'retrocomputer', 'computer01', false);
@@ -12,6 +12,9 @@ export default class Retrocomputer extends Interactable {
         this.anims.play('computershiftingcolors', true);
         // Computer behavior
         this.isOpen = false;
+        this.retroWindow = document.getElementById('retro-window');
+        this.retroWindow.style.visibility = 'hidden';
+        this.windowContent = document.getElementById('retro-window-content')
     }
 
     interact(){
@@ -21,8 +24,12 @@ export default class Retrocomputer extends Interactable {
     toggleWindow(){
         if(this.isOpen){
             this.isOpen = false;
+            this.retroWindow.style.visibility = 'hidden';
         }else{
             this.isOpen = true;
+            // 🖥️ Open window
+            this.retroWindow.style.visibility = 'visible';
+            document.getElementById('title').innerHTML = langs.get("retro_computer.analysis.title");
         }
     }
 

@@ -1,0 +1,43 @@
+{
+    "retro_computer": {
+        "analysis": {
+            "title" : "ANALYSIS",
+            "objective_name": "Subject: Haziel Magallanes, 18 years old.",
+            "objective_location": "Location: Argentina, Buenos Aires, Baigorrita.",
+            "objective_languages": "Languages: Spanish (Native), English (Acquired).",
+            "objective_skills": "Skills Report:\nOur data seems to indicate that he is an excellent programmer, very creative as well. If I were a company, I would be delighted to hire him. Our spies report that he mainly masters Java but is also very proficient with Python and JavaScript and is no stranger to C++.\nOn the next page, his skills are explored in more detail."
+        },
+        "skills": {
+            "title" : "SKILLS",
+            "1": "The subject has extensive knowledge of Java, the language he feels most comfortable with.",
+            "2": "The subject has experience with Godot, Phaser (on which this game is made), Pygame, and GameMaker.",
+            "3": "The subject uses both React and Vanilla JS for Frontend.",
+            "4": "The subject uses Node + Express for Backend.",
+            "5": "The subject is not unfamiliar with graphic design; if required, he is capable of using Figma and Aseprite.",
+            "6": "The subject has general knowledge of C++ and is seeking to deepen it. He has mainly experimented with small games."
+        },
+        "experiences": {
+            "title" : "Previous Experiences",
+            "preview_text": "Projects",
+            "page1": {
+                "1": "Electronic Voting Website for Premios Lola 2024 (Argentina, Buenos Aires, Junín). Fullstack, technologies used: React, Express, NodeJS, MySQL, Firebase.",
+                "2": "Automatic menus library for Java terminal applications.",
+                "3": "This portfolio, made in Phaser 3.",
+                "4": "4 months as Volunteer Technical Support at QloxHost (a free VPS hosting service that closed) in 2022.",
+                "5": "Development of a static institutional website proposal for the Technical Highschool 'Escuela Técnica 2' (Argentina, Buenos Aires, Junín).",
+                "6": "Development of Scripts for Minecraft servers.",
+                "7": "Unpublished videogames made in Godot 4 and Pygame.",
+                "8": "More on the next page."
+            },
+            "page2": {
+                "1": "Streamer and YouTuber in the past, where he developed good communication skills.",
+                "2": "Creation of a mini retro videogame console in Arduino."
+            }
+        },
+        "final": {
+            "text": "This is all the information collected by the computer.\nFor more constantly updated information and a more detailed view of all projects developed by the subject, go to the library...",
+            "press-scape": "(Press ESC to close the computer).",
+            "touch-outside": "(Touch outside the computer to close it)."
+        }
+    }
+}
