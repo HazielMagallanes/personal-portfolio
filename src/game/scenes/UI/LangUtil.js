@@ -1,7 +1,10 @@
 // Singleton
 class LangUtil {
     constructor(){
-        this.lang = 'en-US';
+        const availableLangs = ['en-US', 'es-ES'];
+        const systemLanguage = Intl.DateTimeFormat().resolvedOptions().locale;
+        // Check if the browser language is available in the game
+        this.lang = availableLangs.includes(systemLanguage) ? systemLanguage : availableLangs[0];
         // Lang data provided on preload
         this.langData = {};
     }

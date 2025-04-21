@@ -1,4 +1,5 @@
 import BouncingElement from "./BouncingElement";
+import langs from "./LangUtil";
 
 export default class Menu extends Phaser.Scene {
     constructor() {
@@ -22,21 +23,44 @@ export default class Menu extends Phaser.Scene {
         this.scale.lockOrientation("landscape");
 
         // 📝📱 UI elements
-        var startText = this.sys.game.device.os.desktop ? 'press-space-' : 'touch-screen-'
+        var startText = this.sys.game.device.os.desktop ? '01': '02'
+        
+        this.languageButtons =
+        [
+            this.add.sprite(width - (25 + 16), 8, 'UI', 'en-US01').setInteractive()
+            .on('pointerup', () => {
+                this.languageButtons[0].setFrame('en-US01');
+                this.changeLanguage('en-US');
+            })
+            .on('pointerdown', () => {
+                this.languageButtons[0].setFrame('en-US02');
+            }),
+            this.add.sprite(width - (5 + 16), 8, 'UI', 'es-ES01').setInteractive()
+            .on('pointerup', () => {
+                this.languageButtons[1].setFrame('es-ES01');
+                this.changeLanguage('es-ES');
+            })
+            .on('pointerdown', () => {
+                this.languageButtons[1].setFrame('es-ES02');
+            })
+        ]
         // 🖼️ Use pregenerated text to avoid problems with older GPUs and integrated graphics (Happened on one of my computers LOL).
         this.gameTitle = this.add.sprite(width / 2, height / 4, 'title-text').setOrigin(0.5);
-        this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, `${startText}ES`).setOrigin(0.5), 0.08, height / 2.2);
+        this.startButton = new BouncingElement(this.add.sprite(width / 2, height / 2, 'pregen-texts', `${langs.getLang() + startText}`).setOrigin(0.5), 0.08, height / 2.2);
 
+        addEventListener('touchend', () => {
+            if(!this.scene.isActive('Menu')) return;
+            if(this.touchingLanguages) {
+                this.touchingLanguages = false;
+                return;
+            }
+            this.scene.start('World');
+        })
         // 🌐📏 Resize handling
         this.scale.addListener('resize', (gameSize) => {
             const { width, height } = gameSize;
             this.recenterMenu(width, height);
         });
-        addEventListener('touchend', () => {
-            if(!this.scene.isActive('World')){
-                this.scene.start('World');
-            }
-        })
         // 🎮 Interactivity
         this.input.keyboard.on('keyup-SPACE', () => {
             this.scene.start('World');
@@ -68,7 +92,14 @@ export default class Menu extends Phaser.Scene {
         })
         this.backgroundLayers[0].setScale(1, 1);
     }
-
+    changeLanguage(lang){
+        var startText = this.sys.game.device.os.desktop ? '01': '02'
+        // Change language in the game
+        langs.setLang(lang);
+        // Change pregenerated texts to corresponding language
+        this.startButton.getElement().setFrame(`${langs.getLang() + startText}`)
+        this.touchingLanguages = true;
+    }
     update() {
         // 🎞️🌌 Parallax
         this.backgroundLayers[1].tilePositionX += 0.02;

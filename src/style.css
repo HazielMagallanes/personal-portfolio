@@ -71,6 +71,7 @@ a {
 }
 .text-content .title{
   color: white;
+  position: absolute;
   -webkit-text-stroke: 2px #000000;
   font-family: "Pixelify-Sans-Bold", Helvetica;
   color: #ffffff;
@@ -78,7 +79,8 @@ a {
   text-align: center;
   letter-spacing: 1.80px;
   line-height: normal;
-  margin-top: 5%;
+  top: 5%;
+  left: 3%;
 }
 
 

@@ -36,8 +36,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.font('press-start-2p', './font/Press_Start_2P/PressStart2P-Regular.ttf', 'truetype');
         // 📝 Pregenerated texts
         this.load.image('title-text', './pregen_text/title.bmp');
-        this.load.image('press-space-ES', './pregen_text/press-space-ES.bmp');
-        this.load.image('touch-screen-ES', './pregen_text/touch-screen-ES.bmp');
+        this.load.atlas('pregen-texts', './pregen_text/pregen_texts.bmp', './pregen_text/pregen_texts.json');
         // Languages
         this.load.json('en-US', './lang/en-US.json');
         this.load.json('es-ES', './lang/es-ES.json');
