@@ -32,7 +32,6 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('house-furniture-tiles', './sprites/tilesets/fixed/house/house_furniture.png');
         this.load.image('constraints-tileset', './sprites/tilesets/constraints.png');
         // 🔤 Fonts
-        this.load.font('pixelify-sans-bold', './font/Pixelify-sans/static/PixelifySans-Bold.ttf', 'truetype');
         this.load.font('press-start-2p', './font/Press_Start_2P/PressStart2P-Regular.ttf', 'truetype');
         // 📝 Pregenerated texts
         this.load.image('title-text', './pregen_text/title.bmp');
