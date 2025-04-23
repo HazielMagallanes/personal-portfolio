@@ -2,10 +2,10 @@
     "retro_computer": {
         "analysis": {
             "title" : "ANALISIS DE SUJETO",
-            "objective_name": "Sujeto: Haziel Magallanes, 18 años.",
+            "objective_name": "Sujeto: Haziel Magallanes.",
             "objective_location": "Localización: Argentina, Buenos Aires, Baigorrita.",
             "objective_languages": "Idiomas: Español (Nativo), Inglés (Adquirido).",
-            "objective_skills": "Informe de Habilidades:\nNuestros datos parecen indicar que es un excelente programador, muy creativo además. Si fuera una empresa estaría encantado de contratarlo.Nuestros espias informan que domina principalmente Java pero también es muy proficiente con Python y JavaScript y no es ningun ajeno a C++.\nEn la siguiente página se exploran más a detalle sus habilidades."
+            "objective_skills": "Informe de Habilidades:<br/>Nuestros datos parecen indicar que es un excelente programador, muy creativo además. Si fuera una empresa estaría encantado de contratarlo.<br/>Nuestros espias informan que domina principalmente Java pero también es muy proficiente con Python y JavaScript y no es ningun ajeno a C++.<br/>En la siguiente página se exploran más a detalle sus habilidades."
         },
         "skills":{
             "title" : "HABILIDADES",

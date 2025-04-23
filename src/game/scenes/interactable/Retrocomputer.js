@@ -15,6 +15,15 @@ export default class Retrocomputer extends Interactable {
         this.retroWindow = document.getElementById('retro-window');
         this.retroWindow.style.visibility = 'hidden';
         this.windowContent = document.getElementById('retro-window-content')
+
+        this.pagesKeys = {
+            1: 'analysis',
+            2: 'skills',
+            3: 'experiences',
+            4: 'experiences',
+            5: 'final',
+        };
+        this.page = 1;
     }
 
     interact(){
@@ -29,10 +38,59 @@ export default class Retrocomputer extends Interactable {
             this.isOpen = true;
             // 🖥️ Open window
             this.retroWindow.style.visibility = 'visible';
-            document.getElementById('title').innerHTML = langs.get("retro_computer.analysis.title");
+            this.windowContent.innerHTML = this.getPagesContent(this.page);
         }
     }
+    // CONTENT GETTERS
+    getPagesContent(page){
+        // Get keys from lang json
+        const pageKey = this.pagesKeys[page];
+        const keyPrefix = 'retro_computer.' + pageKey + '.';
+        var content;
+        const keys = Object.keys(this.scene.cache.json.get('en-US')['retro_computer'][pageKey]);
+        return `
+        <div class="text-content">
+           ${this.getPageTextContent(page)}
+        </div>
+        <div class="previewer">
+          <div class="previewer-image">
+          </div>
+          <div class="previewer-subtitle">Haziel Magallanes</div>
+        </div>
+        <div class="retro-window-controls"></div>
+        `
+    }
+    getPageTextContent(page){
+        // Get keys from lang json
+        const pageKey = this.pagesKeys[page];
+        const keyPrefix = 'retro_computer.' + pageKey + '.';
+        var content;
+        const keys = Object.keys(this.scene.cache.json.get('en-US')['retro_computer'][pageKey]);
+        switch(page){
+            case 1 : {
+                content = `
+                <div class="content">
+                    <span>${langs.get(keyPrefix + 'objective_name')}</span>
+                    <span>${langs.get(keyPrefix + 'objective_location')}</span>
+                    <span>${langs.get(keyPrefix + 'objective_languages')}</span> 
+                    <span>${langs.get(keyPrefix + 'objective_skills')}</span> 
+                </div>
+                `      
+            }
+            case 2: {
 
+            }
+        }
+        return `
+        <div class="title">
+            <span>${langs.get(keyPrefix + 'title')}</span>
+        </div>
+        ${content}
+        `
+    }
+
+
+    // Sprite behaviors
     createAnimations(scene) {
         if(scene.anims.exists('computershiftingcolors')) return;
         scene.anims.create({

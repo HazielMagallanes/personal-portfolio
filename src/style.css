@@ -64,26 +64,48 @@ a {
 #retro-window-content{
   width: 100%;
   height: 100%;
-}
-.text-content{
-  display: flex;
   color: white;
   font-family: "Pixelify-Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+.text-content{
+  display: flex;
+}
 .text-content .title {
   position: absolute;
-  -webkit-text-stroke: 0.25em black;
+  -webkit-text-stroke: 1.4vh black;
   paint-order: stroke fill;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: 5.5vh;
   text-align: center;
-  letter-spacing: -2px;
+  /* letter-spacing: -2px; */
   line-height: normal;
   top: calc((29 / 347) * 77vh);
   left: calc((28 / 524) * 55vw);
 }
+.text-content .content{
+  position: absolute;
+  font-size: 2.5vh;
+  text-align: left;
+  line-height: normal;
+  top: calc((63 / 347) * 77vh);
+  left: calc((13 / 524) * 55vw);
+  display: flex;
+  flex-direction: column;
+  width: calc((231 / 524) * 55vw);
+}
 
+.previewer-subtitle{
+  position: absolute;
+  -webkit-text-stroke: 1.4vh black;
+  paint-order: stroke fill;
+  font-size: 6.14vh;
+  text-align: center;
+  line-height: normal;
+  top: calc((208 / 347) * 77vh);
+  left: calc((274 / 524) * 55vw);
+}
 
 
 .retro-window-corners{

@@ -1,20 +1,20 @@
 {
     "retro_computer": {
         "analysis": {
-            "title" : "ANALYSIS OF SUBJECT",
-            "objective_name": "Subject: Haziel Magallanes, 18 years old.",
+            "title" : "TARGET ANALYSIS",
+            "objective_name": "Subject: Haziel Magallanes.",
             "objective_location": "Location: Argentina, Buenos Aires, Baigorrita.",
             "objective_languages": "Languages: Spanish (Native), English (Acquired).",
-            "objective_skills": "Skills Report:\nOur data seems to indicate that he is an excellent programmer, very creative as well. If I were a company, I would be delighted to hire him. Our spies report that he mainly masters Java but is also very proficient with Python and JavaScript and is no stranger to C++.\nOn the next page, his skills are explored in more detail."
+            "objective_skills": "Skills Report:<br/>Our data seems to indicate that he is an excellent programmer, very creative as well. If I were a company, I would be delighted to hire him.<br/>Our spies report that he mainly uses Java but is also very proficient with Python and JavaScript and is no stranger to C++.<br/>On the next page, his skills are explored in more detail."
         },
         "skills": {
             "title" : "SKILLS",
-            "1": "The subject has extensive knowledge of Java, the language he feels most comfortable with.",
-            "2": "The subject has experience with Godot, Phaser (on which this game is made), Pygame, and GameMaker.",
-            "3": "The subject uses both React and Vanilla JS for Frontend.",
-            "4": "The subject uses Node + Express for Backend.",
-            "5": "The subject is not unfamiliar with graphic design; if required, he is capable of using Figma and Aseprite.",
-            "6": "The subject has general knowledge of C++ and is seeking to deepen it. He has mainly experimented with small games."
+            "1": "The target has extensive knowledge of Java, the language he feels most comfortable with.",
+            "2": "The target has experience with Godot, Phaser (on which this game is made), Pygame, and GameMaker.",
+            "3": "The target uses both React and Vanilla JS for Frontend.",
+            "4": "The target uses Node + Express for Backend.",
+            "5": "The target is not unfamiliar with graphic design; if required, he is capable of using Figma and Aseprite.",
+            "6": "The target has general knowledge of C++ and is seeking to deepen it. He has mainly experimented with small games."
         },
         "experiences": {
             "title" : "Previous Experiences",
