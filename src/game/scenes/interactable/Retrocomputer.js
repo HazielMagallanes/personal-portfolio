@@ -41,7 +41,21 @@ export default class Retrocomputer extends Interactable {
             this.windowContent.innerHTML = this.getPagesContent(this.page);
         }
     }
-    // CONTENT GETTERS
+    // CONTENT GETTERS (Based on React component system)
+    tripleArrow(){
+        return `
+        <div class="triple-arrow">
+            <div class="arrow f"></div>
+            <div class="arrow s"></div>
+            <div class="arrow t"></div>
+        </div>`
+    }
+    arrow(){
+        return `
+            <div class="arrow"></div>
+            `
+    }
+
     getPagesContent(page){
         // Get keys from lang json
         const pageKey = this.pagesKeys[page];
@@ -55,9 +69,11 @@ export default class Retrocomputer extends Interactable {
         <div class="previewer">
           <div class="previewer-image">
           </div>
-          <div class="previewer-subtitle">Haziel Magallanes</div>
         </div>
-        <div class="retro-window-controls"></div>
+        <div class="previewer-subtitle">Haziel Magallanes</div>
+        <div class="retro-window-controls">
+            ${this.tripleArrow()}
+        </div>
         `
     }
     getPageTextContent(page){

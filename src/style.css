@@ -98,6 +98,7 @@ a {
 
 .previewer-subtitle{
   position: absolute;
+  z-index: 1;
   -webkit-text-stroke: 1.4vh black;
   paint-order: stroke fill;
   font-size: 6.14vh;
@@ -107,7 +108,44 @@ a {
   left: calc((274 / 524) * 55vw);
 }
 
-
+.previewer {
+  width: calc((161 / 524) * 55vw);
+  height: calc((171 / 347) * 77vh);
+  background-color: #59a73c6b;
+  box-shadow: -22px 6px 0px #f3f77940, -22px 9px 0px #f3f77940, 0px 4px 0px
+    #296d106b;
+  position: absolute;
+  top: calc((25 / 347) * 77vh);
+  left: calc((306 / 524) * 55vw);
+  z-index: 2;
+}
+.retro-window-controls .arrow{
+  width: calc((82 / 524) * 55vw);
+  height: calc((82 / 347) * 77vh);
+  background-image: url(./game/assets/html/img/retro-window/arrow.svg);
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 69%;
+}
+.retro-window-controls .triple-arrow{
+  width: calc((((82 / 524) * 55vw) * 3) + ((48 / 524) * 55vw));
+  height: calc((82 / 347) * 77vh);
+  position: absolute;
+  top: calc((236 / 347) * 77vh);
+  left: calc((298 / 524) * 55vw);
+  display: flex;
+  flex-direction: row;
+}
+.retro-window-controls .triple-arrow .f{
+  
+}
+.retro-window-controls .triple-arrow .s{
+  
+}
+.retro-window-controls .triple-arrow .t{
+  
+}
 .retro-window-corners{
   position: absolute;
   width: 100%;
