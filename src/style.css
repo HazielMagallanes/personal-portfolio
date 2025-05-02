@@ -8,6 +8,34 @@
   font-family: 'Pixelify-Sans';
   src: url("./game/assets/font/Pixelify_Sans/static/PixelifySans-Bold.ttf") format("truetype");
 }
+@media (orientation: portrait){
+  :root{
+    --container-width: 90vw;
+    --container-height: 30vh;
+  }
+  .contingency-plan-for-portrait{
+    display: flex;
+    background-color: black;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'press-start-2p';
+    font-size: 24px;
+    color: white;
+  }
+}
+@media (orientation: landscape){
+  :root{
+    --container-width: 55vw;
+    --container-height: 77vh;
+  }
+  .contingency-plan-for-portrait{
+    display: none;
+  }
+}
 :root {
   font-family: 'press-start-2p';
 }
@@ -40,15 +68,16 @@ a {
   top: 5%;
   left: 5%;
 }
+
+
 /*Stylings*/
 #retro-window {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: center;
-  visibility: hidden;
-  width: 55vw;
-  height: 77vh;
+  width: var(--container-width);
+  height: var(--container-height);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -81,19 +110,19 @@ a {
   text-align: center;
   /* letter-spacing: -2px; */
   line-height: normal;
-  top: calc((29 / 347) * 77vh);
-  left: calc((28 / 524) * 55vw);
+  top: calc((29 / 347) * var(--container-height));
+  left: calc((28 / 524) * var(--container-width));
 }
 .text-content .content{
   position: absolute;
   font-size: 2.5vh;
   text-align: left;
   line-height: normal;
-  top: calc((63 / 347) * 77vh);
-  left: calc((13 / 524) * 55vw);
+  top: calc((63 / 347) * var(--container-height));
+  left: calc((13 / 524) * var(--container-width));
   display: flex;
   flex-direction: column;
-  width: calc((231 / 524) * 55vw);
+  width: calc((231 / 524) * var(--container-width));
 }
 
 .previewer-subtitle{
@@ -104,48 +133,74 @@ a {
   font-size: 6.14vh;
   text-align: center;
   line-height: normal;
-  top: calc((208 / 347) * 77vh);
-  left: calc((274 / 524) * 55vw);
+  top: calc((208 / 347) * var(--container-height));
+  left: calc((274 / 524) * var(--container-width));
 }
 
 .previewer {
-  width: calc((161 / 524) * 55vw);
-  height: calc((171 / 347) * 77vh);
+  width: calc((161 / 524) * var(--container-width));
+  height: calc((171 / 347) * var(--container-height));
   background-color: #59a73c6b;
   box-shadow: -22px 6px 0px #f3f77940, -22px 9px 0px #f3f77940, 0px 4px 0px
     #296d106b;
   position: absolute;
-  top: calc((25 / 347) * 77vh);
-  left: calc((306 / 524) * 55vw);
+  top: calc((25 / 347) * var(--container-height));
+  left: calc((306 / 524) * var(--container-width));
   z-index: 2;
 }
 .retro-window-controls .arrow{
-  width: calc((82 / 524) * 55vw);
-  height: calc((82 / 347) * 77vh);
+  width: calc((82 / 524) * var(--container-width));
+  height: calc((82 / 347) * var(--container-height));
   background-image: url(./game/assets/html/img/retro-window/arrow.svg);
   position: absolute;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 69%;
+  cursor: pointer;
 }
-.retro-window-controls .triple-arrow{
-  width: calc((((82 / 524) * 55vw) * 3) + ((48 / 524) * 55vw));
-  height: calc((82 / 347) * 77vh);
+.retro-window-controls #triple-arrow{
+  width: calc((((82 / 524) * var(--container-width)) * 3) + ((48 / 524) * var(--container-width)));
+  height: calc((82 / 347) * var(--container-height));
   position: absolute;
-  top: calc((236 / 347) * 77vh);
-  left: calc((298 / 524) * 55vw);
+  top: calc((236 / 347) * var(--container-height));
+  left: calc((305 / 524) * var(--container-width));
   display: flex;
   flex-direction: row;
 }
-.retro-window-controls .triple-arrow .f{
-  
+.retro-window-controls #triple-arrow:hover{
+  cursor: pointer;
 }
-.retro-window-controls .triple-arrow .s{
-  
+.retro-window-controls #triple-arrow .f{
+  left: 0;
+  animation: arrow-bounce 2s ease-in-out 200ms infinite alternate-reverse none;
 }
-.retro-window-controls .triple-arrow .t{
-  
+.retro-window-controls #triple-arrow .s{
+  left: 15%;
+  animation: arrow-bounce 2s ease-in-out 400ms infinite alternate-reverse none;
 }
+.retro-window-controls #triple-arrow .t{
+  left: 30%;
+  animation: arrow-bounce 2s ease-in-out 600ms infinite alternate-reverse none;
+}
+.retro-window-controls #double-arrow{
+  width: calc((((82 / 524) * var(--container-width)) * 2));
+  height: calc((82 / 347) * var(--container-height));
+  position: absolute;
+  top: calc((236 / 347) * var(--container-height));
+  left: calc((275 / 524) * var(--container-width));
+  display: flex;
+  flex-direction: row;
+}
+.retro-window-controls #double-arrow #next{
+  left: 80%;
+  animation: arrow-bounce 2s ease-in-out 400ms infinite alternate-reverse none;
+}
+.retro-window-controls #double-arrow #past{
+  transform: rotateZ(180deg);
+  animation: arrow-bounce-flipped 2s ease-in-out 400ms infinite alternate-reverse none;
+}
+
+
 .retro-window-corners{
   position: absolute;
   width: 100%;
@@ -157,4 +212,18 @@ a {
 .retro-window-corners img{
   width: 100%;
   height: 100%;
+}
+@keyframes arrow-bounce {
+  from{
+    transform: translateX(0);
+  }to{
+    transform: translate(-10%);
+  }
+}
+@keyframes arrow-bounce-flipped {
+  from{
+    transform: translateX(0) rotateZ(180deg);
+  }to{
+    transform: translate(10%) rotateZ(180deg);
+  }
 }

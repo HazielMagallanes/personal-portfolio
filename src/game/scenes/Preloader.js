@@ -43,13 +43,15 @@ export default class Preloader extends Phaser.Scene {
     }
 
     create() {
+        // Lock orientation to landscape
+        if (this.sys.game.device.os.desktop === false) this.scale.lockOrientation('landscape');
         // Load language data from JSON file
         langs.langData = {
             'en-US': this.cache.json.get('en-US'),
             'es-ES': this.cache.json.get('es-ES')
         }
         langs.setLang('es-ES')        
-        
+        document.getElementById('body').style.visibility="visible"
         this.scene.start('Menu');
     }
 }

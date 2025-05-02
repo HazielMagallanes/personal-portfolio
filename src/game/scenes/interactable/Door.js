@@ -20,12 +20,12 @@ export default class Door extends Interactable {
         this.toggleDoor();
     }
 
-    toggleDoor(){
-        if(this.isOpen){
+    toggleDoor() {
+        if (this.isOpen) {
             this.isOpen = false;
             this.body.setEnable(true);
             this.anims.playReverse('open', true);
-        }else{
+        } else {
             this.anims.play('open', true);
             this.isOpen = true;
             this.body.setEnable(false);
@@ -33,11 +33,11 @@ export default class Door extends Interactable {
     }
 
     createAnimations(scene) {
-        if(scene.anims.exists('open')) return;
+        if (scene.anims.exists('open')) return;
         scene.anims.create({
             key: 'open',
             frames: scene.anims.generateFrameNames('door', {
-                prefix: 'door',
+                prefix: 'door_outlined',
                 start: 1,
                 end: 3,
                 zeroPad: 2
@@ -49,5 +49,12 @@ export default class Door extends Interactable {
 
     update(){
         super.update();
+        if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
+            // 🖱️ Show object is interactable
+            if(!this.anims.isPlaying) this.setFrame(this.isOpen ? 'door_outlined03' : 'door_outlined01');
+        }else{
+            // Remove outline
+            if(!this.anims.isPlaying) this.setFrame(this.isOpen ? 'door03' : 'door01');
+        }
     }
 }

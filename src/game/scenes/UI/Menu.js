@@ -20,7 +20,6 @@ export default class Menu extends Phaser.Scene {
         ];
         this.backgroundLayers[6].tilePositionX = width / 3;
         this.scaleBackground();
-        this.scale.lockOrientation("landscape");
 
         // 📝📱 UI elements
         var startText = this.sys.game.device.os.desktop ? '01': '02'

@@ -1,26 +1,50 @@
 { "frames": {
    "door01": {
-    "frame": { "x": 2, "y": 2, "w": 32, "h": 48 },
+    "frame": { "x": 2, "y": 2, "w": 34, "h": 51 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
-    "sourceSize": { "w": 32, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
     "duration": 200
    },
    "door02": {
-    "frame": { "x": 37, "y": 2, "w": 32, "h": 48 },
+    "frame": { "x": 39, "y": 2, "w": 34, "h": 51 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
-    "sourceSize": { "w": 32, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
     "duration": 200
    },
    "door03": {
-    "frame": { "x": 72, "y": 2, "w": 32, "h": 48 },
+    "frame": { "x": 76, "y": 2, "w": 34, "h": 51 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
-    "sourceSize": { "w": 32, "h": 48 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
+    "duration": 200
+   },
+   "door_outlined01": {
+    "frame": { "x": 2, "y": 56, "w": 34, "h": 51 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
+    "duration": 200
+   },
+   "door_outlined02": {
+    "frame": { "x": 39, "y": 56, "w": 34, "h": 51 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
+    "duration": 200
+   },
+   "door_outlined03": {
+    "frame": { "x": 76, "y": 56, "w": 34, "h": 51 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 51 },
+    "sourceSize": { "w": 34, "h": 51 },
     "duration": 200
    }
  },
@@ -29,12 +53,13 @@
   "version": "1.3.13-x64",
   "image": "door.png",
   "format": "RGBA8888",
-  "size": { "w": 106, "h": 52 },
+  "size": { "w": 112, "h": 109 },
   "scale": "1",
   "frameTags": [
   ],
   "layers": [
-   { "name": "door", "opacity": 255, "blendMode": "normal" }
+   { "name": "door", "opacity": 255, "blendMode": "normal" },
+   { "name": "door_outlined", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]
