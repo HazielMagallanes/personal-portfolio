@@ -89,15 +89,22 @@ export default class World extends Phaser.Scene {
         // 🖼️ DRAW UI
         if(this.sys.game.device.os.desktop){
             this.spacebarSign = new SpacebarSign(this, 0, 0).setDepth(1).setOrigin(0.5, 0.5);
+            this.add.sprite(playerSpawn.x * 1.4, playerSpawn.y - 28, 'tutorial');
         }
         if(!this.sys.game.device.os.desktop){
             this.mobileControls = {
                 left: this.add.sprite(16 * 2, height, 'UI', 'mobile01').setDepth(1).setInteractive()
-                .on('pointerover', () => {this.player.direction = -1})
-                .on('pointerout', () => {this.player.direction = 0}),
+                .on('pointerover', () => {this.events.emit('movingleft')})
+                .on('pointerout', () => {this.events.emit('stopmoving')}),
                 right: this.add.sprite(16 * 3, height, 'UI', 'mobile01').setDepth(1).setFlipX(true).setInteractive()
-                .on('pointerover', () => {this.player.direction = 1})
-                .on('pointerout', () => {this.player.direction = 0})
+                .on('pointerover', () => {this.events.emit('movingright')})
+                .on('pointerout', () => {this.events.emit('stopmoving')}),
+                interact: this.add.sprite(width - 24, height, 'UI', 'interact01').setDepth(1).setVisible(false).setInteractive()
+                    .on('pointerover', () => {this.mobileControls.interact.setFrame('interact02')})
+                    .on('pointerout', () => {
+                        this.mobileControls.interact.setFrame('interact01');
+                        this.events.emit('interact');
+                    })
             }
         }
     }
@@ -109,6 +116,8 @@ export default class World extends Phaser.Scene {
             // 📱 Mobile controls
             this.mobileControls.left.setX(16 * 2 + this.cameras.main.scrollX);
             this.mobileControls.right.setX(this.mobileControls.left.x + 16);
+            this.mobileControls.interact.setX((this.scale.width - 24) + this.cameras.main.scrollX);
+            this.mobileControls.interact.setVisible(false);
         }else this.spacebarSign.setVisible(false);
         
         // Update all interactables

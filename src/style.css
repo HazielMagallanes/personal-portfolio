@@ -71,6 +71,30 @@ a {
 
 
 /*Stylings*/
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(100%);
+  width: 0.3em;
+  height: 0.3em;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+
 #retro-window {
   position: absolute;
   display: none;
@@ -126,27 +150,50 @@ a {
 }
 
 .previewer-subtitle{
-  position: absolute;
   z-index: 1;
   -webkit-text-stroke: 1.4vh black;
   paint-order: stroke fill;
   font-size: 6.14vh;
   text-align: center;
   line-height: normal;
-  top: calc((208 / 347) * var(--container-height));
-  left: calc((274 / 524) * var(--container-width));
 }
 
 .previewer {
+  width: calc((300 / 524) * var(--container-width));
+  height: auto;
+  position: absolute;
+  top: calc((25 / 347) * var(--container-height));
+  left: calc((240 / 524) * var(--container-width));
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  row-gap: calc((10 / 347) * var(--container-height));
+}
+.visor {
   width: calc((161 / 524) * var(--container-width));
   height: calc((171 / 347) * var(--container-height));
   background-color: #59a73c6b;
   box-shadow: -22px 6px 0px #f3f77940, -22px 9px 0px #f3f77940, 0px 4px 0px
     #296d106b;
-  position: absolute;
-  top: calc((25 / 347) * var(--container-height));
-  left: calc((306 / 524) * var(--container-width));
-  z-index: 2;
+}
+.previewer.projects {
+  top: calc((65 / 347) * var(--container-height));
+}
+.previewer.projects .visor{
+  width: calc((210 / 524) * var(--container-width));
+  height: calc((131 / 347) * var(--container-height));
+}
+.visor img{
+  width: 100%;
+  height: 100%;
+}
+.visor #photo-visor img {
+  width: 80%;
+  height: 90%;
+  margin-left: 10%;
+  filter: brightness(0.5) hue-rotate(60deg) saturate(1);
 }
 .retro-window-controls .arrow{
   width: calc((82 / 524) * var(--container-width));
@@ -187,7 +234,7 @@ a {
   height: calc((82 / 347) * var(--container-height));
   position: absolute;
   top: calc((236 / 347) * var(--container-height));
-  left: calc((275 / 524) * var(--container-width));
+  left: calc((280 / 524) * var(--container-width));
   display: flex;
   flex-direction: row;
 }

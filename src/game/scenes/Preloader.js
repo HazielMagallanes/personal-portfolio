@@ -9,6 +9,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.path = './src/game/assets/'
         // 🎨 UI
         this.load.atlas('UI', './sprites/UI/UI.png', './sprites/UI/UI.json');
+        this.load.image('tutorial', './sprites/UI/tutorial.png')
         // 🕹️ Player
         this.load.atlas('player', './sprites/player/hazu.png', './sprites/player/hazu.json');
         // 🛠️ Interactable objects

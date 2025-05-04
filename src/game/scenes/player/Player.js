@@ -15,12 +15,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.isMoving = false;
         // 🎞️ Animations
         this.createAnimations(scene);
+        // Controls
         this.keys = scene.input.keyboard.addKeys({
             left: 'A',
-            up: 'W',
             right: 'D'
         });
-        
+        this.scene.input.keyboard.on('keyup-SPACE', () => {
+            this.scene.events.emit('interact');
+        });
+
+        // Events
+        this.scene.events.on('movingright', () => {
+            this.direction = 1;
+        });
+        this.scene.events.on('movingleft', () => {
+            this.direction = -1;
+        });
+        this.scene.events.on('stopmoving', () => {
+            this.direction = 0;
+        })
     }
 
     createAnimations(scene) {
@@ -64,12 +77,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     update() {
         const { left, right } = this.keys;
         if (left.isDown){
-            this.direction = -1;
+            this.scene.events.emit('movingleft');
         }else if (right.isDown){
-            this.direction = 1;
-        }else if (this.scene.sys.game.device.os.desktop){
-            this.direction = 0;
+            this.scene.events.emit('movingright');
         }
         this.move();
+        if(this.scene.sys.game.device.os.desktop){
+            this.direction = 0;
+        }
     }
 }

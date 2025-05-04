@@ -30,16 +30,30 @@ export default class Retrocomputer extends Interactable {
             5: 'final',
         };
         this.page = 1;
+        this.currentPhoto = 0;
+        this.visor;
         this.photosOfMe = [
-            "../../assets/html/img/me/1.webp",
-            "../../assets/html/img/me/2.webp",
-            "../../assets/html/img/me/3.webp",
-            "../../assets/html/img/me/4.webp",
-            "../../assets/html/img/me/5.webp",
-            "../../assets/html/img/me/6.webp",
-            "../../assets/html/img/me/7.webp",
-            "../../assets/html/img/me/8.webp"
+            "./src/game/assets/html/img/me/1.webp",
+            "./src/game/assets/html/img/me/2.webp",
+            "./src/game/assets/html/img/me/3.webp",
+            "./src/game/assets/html/img/me/4.webp",
+            "./src/game/assets/html/img/me/5.webp",
+            "./src/game/assets/html/img/me/6.webp",
+            "./src/game/assets/html/img/me/7.webp",
+            "./src/game/assets/html/img/me/8.webp"
         ];
+        // Initialize visorUpdater
+        this.visorUpdate();
+    }
+    visorUpdate(){
+        // Visor animation;
+        if(this.page == 1 && this.isOpen){
+            this.visor = document.getElementById("photo-visor");
+            this.visor.innerHTML = `<img src=${this.photosOfMe[this.currentPhoto]} alt="Haziel Magallanes">`
+            if(this.currentPhoto == 7){this.currentPhoto = -1};
+            this.currentPhoto += 1;
+        }
+        setTimeout(() => {this.visorUpdate()}, 1000)
     }
 
     interact(){
@@ -66,7 +80,6 @@ export default class Retrocomputer extends Interactable {
         }
     }
     // CONTENT GETTERS (Based on React jsx component system)
-
     getPagesContent(page){
         // Get keys from lang json
         const pageKey = this.pagesKeys[page];
@@ -96,25 +109,51 @@ export default class Retrocomputer extends Interactable {
             case 1:
                 content = `
                     <div class="previewer">
-                        <div class="previewer-image"></div>
+                        <div class="visor">
+                            <div class="previewer-image" id="photo-visor"></div>
+                        </div>
+                        <div class="previewer-subtitle">Haziel Magallanes</div>
                     </div>
-                    <div class="previewer-subtitle">Haziel Magallanes</div>
-                `;break;
+                    
+                `;
+                break;
             case 2:
                 content = `
                     <div class="previewer looping-cards">
+                        <div class="visor">
+                            <div class="previewer-image"></div>
+                        </div>
+                        <div class="previewer-subtitle">Tech Stack</div>
+                    </div
+                `;break;
+            case 3:
+                content = `
+                <div class="previewer projects">
+                    <div class="visor">
                         <div class="previewer-image"></div>
                     </div>
-                    <div class="previewer-subtitle">Tech Stack</div>
-                `;break;
+                    <div class="previewer-subtitle">${langs.get('retro_computer.experiences.preview_text')}</div>
+                </div
+            `;break;
+            case 4:
+                // Same as case 3
+                content = `
+                <div class="previewer projects">
+                    <div class="visor">
+                        <div class="previewer-image"></div>
+                    </div>
+                    <div class="previewer-subtitle">${langs.get('retro_computer.experiences.preview_text')}</div>
+                </div
+            `;break;
         }
-        return content;
+        return content || '';
     }
 
     getPageTextContent(page){
         // Get keys from lang json
         const pageKey = this.pagesKeys[page];
         const keyPrefix = 'retro_computer.' + pageKey + '.';
+        var title = langs.get(keyPrefix + 'title');
         var content;
         switch(page){
             case 1 : {
@@ -182,10 +221,14 @@ export default class Retrocomputer extends Interactable {
                 break;
             }
         }
+        // Number of Previous experiences page.
+        if(page == 3){ title += " 1" }
+        else if(page == 4){ title += " 2" }
+        // Return title div + content. If page  == 5 exclude title.
         return `
         ${this.page != 5 ? 
         `<div class="title">
-            <span>${langs.get(keyPrefix + 'title')}</span>
+            <span>${title}</span>
         </div>` : ''
         }
         ${content}

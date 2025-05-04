@@ -10,7 +10,7 @@ export default class Interactable extends Phaser.Physics.Arcade.Sprite {
     }
 
     create(){
-        this.scene.input.keyboard.on('keyup-SPACE', () => {
+        this.scene.events.on('interact', () => {
             if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
                 this.interact();
             }
@@ -30,6 +30,8 @@ export default class Interactable extends Phaser.Physics.Arcade.Sprite {
                 }else{
                     this.scene.spacebarSign.setPosition(this.interactableArea.getBottomCenter().x - 40, this.interactableArea.getTopCenter().y);
                 }
+            }else{
+                this.scene.mobileControls.interact.setVisible(true);
             }
         }
     }
