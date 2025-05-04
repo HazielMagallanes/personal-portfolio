@@ -125,18 +125,40 @@ ul li::before {
 .text-content{
   display: flex;
 }
+.text-content.final{
+  display: flex;
+  width: 100%;
+}
 .text-content .title {
   position: absolute;
   -webkit-text-stroke: 1.4vh black;
   paint-order: stroke fill;
-  /* font-size: 2rem; */
   font-size: 5.5vh;
   text-align: center;
-  /* letter-spacing: -2px; */
   line-height: normal;
   top: calc((29 / 347) * var(--container-height));
   left: calc((28 / 524) * var(--container-width));
 }
+.text-content .final-text{
+  position: absolute;
+  -webkit-text-stroke: 1.1vh black;
+  paint-order: stroke fill;
+  font-size: 3.5vh;
+  text-align: left;
+  line-height: normal;
+  top: calc((29 / 347) * var(--container-height));
+  left: calc((28 / 524) * var(--container-width));
+}
+.text-content .final-caption{
+  position: absolute;
+  paint-order: stroke fill;
+  font-size: 5vh;
+  text-align: left;
+  line-height: normal;
+  top: calc((120 / 347) * var(--container-height));
+  left: calc((28 / 524) * var(--container-width));
+}
+
 .text-content .content{
   position: absolute;
   font-size: 2.5vh;
@@ -205,7 +227,7 @@ ul li::before {
   background-size: 69%;
   cursor: pointer;
 }
-.retro-window-controls #triple-arrow{
+.retro-window-controls .triple-arrow{
   width: calc((((82 / 524) * var(--container-width)) * 3) + ((48 / 524) * var(--container-width)));
   height: calc((82 / 347) * var(--container-height));
   position: absolute;
@@ -214,18 +236,23 @@ ul li::before {
   display: flex;
   flex-direction: row;
 }
-.retro-window-controls #triple-arrow:hover{
+.retro-window-controls .triple-arrow#triple-arrow-final{
+  left: calc((-100 / 524) * var(--container-width));
+  transform: rotateZ(180deg);
+}
+
+.retro-window-controls .triple-arrow:hover{
   cursor: pointer;
 }
-.retro-window-controls #triple-arrow .f{
+.retro-window-controls .triple-arrow .f{
   left: 0;
   animation: arrow-bounce 2s ease-in-out 200ms infinite alternate-reverse none;
 }
-.retro-window-controls #triple-arrow .s{
+.retro-window-controls .triple-arrow .s{
   left: 15%;
   animation: arrow-bounce 2s ease-in-out 400ms infinite alternate-reverse none;
 }
-.retro-window-controls #triple-arrow .t{
+.retro-window-controls .triple-arrow .t{
   left: 30%;
   animation: arrow-bounce 2s ease-in-out 600ms infinite alternate-reverse none;
 }

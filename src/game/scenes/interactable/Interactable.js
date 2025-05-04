@@ -12,6 +12,7 @@ export default class Interactable extends Phaser.Physics.Arcade.Sprite {
     create(){
         this.scene.events.on('interact', () => {
             if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
+                if(this.scene.player.inputBlocked) return;
                 this.interact();
             }
         });

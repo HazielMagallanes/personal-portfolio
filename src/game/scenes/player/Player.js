@@ -13,6 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.speed = 200;
         this.direction = 0;
         this.isMoving = false;
+        this.inputBlocked = false;
         // 🎞️ Animations
         this.createAnimations(scene);
         // Controls
@@ -25,10 +26,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         });
 
         // Events
+        this.scene.events.on('blockinput', () => {
+            this.inputBlocked = true;
+        })
+        this.scene.events.on('unlockinput', () => {
+            this.inputBlocked = false;
+        })
         this.scene.events.on('movingright', () => {
+            if(this.inputBlocked) return;
             this.direction = 1;
         });
         this.scene.events.on('movingleft', () => {
+            if(this.inputBlocked) return;
             this.direction = -1;
         });
         this.scene.events.on('stopmoving', () => {

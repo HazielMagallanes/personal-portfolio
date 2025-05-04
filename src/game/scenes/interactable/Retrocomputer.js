@@ -17,9 +17,11 @@ export default class Retrocomputer extends Interactable {
         this.windowContent = document.getElementById('retro-window-content')
         this.windowControllers = {
             tripleContainer: document.getElementById("triple-arrow"),
-            doubleContainer: document.getElementById("double-arrow")
+            doubleContainer: document.getElementById("double-arrow"),
+            finalContainer: document.getElementById("triple-arrow-final")
         }
         this.windowControllers.tripleContainer.addEventListener('click', () => {this.nextPage()});
+        this.windowControllers.finalContainer.addEventListener('click', () => {this.pastPage()});
         document.getElementById("next").addEventListener('click', () => {this.nextPage()});
         document.getElementById("past").addEventListener('click', () => {this.pastPage()});
         this.pagesKeys = {
@@ -44,6 +46,20 @@ export default class Retrocomputer extends Interactable {
         ];
         // Initialize visorUpdater
         this.visorUpdate();
+
+        // Window close
+        this.scene.input.keyboard.on('keyup-ESC', () =>{
+            if(this.isOpen){
+                this.scene.events.emit('unlockinput');
+                this.toggleWindow();
+            }
+        })
+        document.addEventListener('touchstart', (event) => {
+            if(this.isOpen && !document.getElementById('retro-window').contains(event.target)){
+                this.scene.events.emit('unlockinput');
+                this.toggleWindow();
+            }
+        })
     }
     visorUpdate(){
         // Visor animation;
@@ -74,6 +90,7 @@ export default class Retrocomputer extends Interactable {
             this.page = 1;
         }else{
             this.isOpen = true;
+            this.scene.events.emit('blockinput');
             // 🖥️ Open window
             this.retroWindow.style.display = 'flex';
             this.windowContent.innerHTML = this.getPagesContent(1);
@@ -85,19 +102,20 @@ export default class Retrocomputer extends Interactable {
         const pageKey = this.pagesKeys[page];
         const keyPrefix = 'retro_computer.' + pageKey + '.';
         this.windowControllers.tripleContainer.style.display = "none";
+        this.windowControllers.finalContainer.style.display = "none";
         this.windowControllers.doubleContainer.style.display = "none";
         var content;
         const keys = Object.keys(this.scene.cache.json.get('en-US')['retro_computer'][pageKey]);
         switch(page){
             case 1: 
                 {this.windowControllers.tripleContainer.style.display = 'flex';break;}
+            case 5:
+                {this.windowControllers.finalContainer.style.display = 'flex';break;}
             default:
                 {this.windowControllers.doubleContainer.style.display = 'flex';break;}
         }
         return `
-        <div class="text-content">
-           ${this.getPageTextContent(page)}
-        </div>
+        ${this.getPageTextContent(page)}
         ${this.getPagePreviewer(page)}`
     }
     getPagePreviewer(page){
@@ -213,9 +231,9 @@ export default class Retrocomputer extends Interactable {
             case 5: {
                 content = `
                 <div class="content">
-                    <p class="title">${langs.get(keyPrefix + 'text')}</p>
-                    <p>${langs.get(keyPrefix + 'press-scape')}</p>
-                    <p>${langs.get(keyPrefix + 'touch-outside')}</p>
+                    <p class="final-text">${langs.get(keyPrefix + 'text')}</p>
+                    <p class="final-caption">${this.scene.sys.game.device.os.desktop ? 
+                     langs.get(keyPrefix + 'press-scape') : langs.get(keyPrefix + 'touch-outside')}</p>
                 </div>
                 `;
                 break;
@@ -227,11 +245,13 @@ export default class Retrocomputer extends Interactable {
         // Return title div + content. If page  == 5 exclude title.
         return `
         ${this.page != 5 ? 
-        `<div class="title">
-            <span>${title}</span>
-        </div>` : ''
+        `<div class="text-content">
+            <div class="title">
+                <span>${title}</span>
+            </div>` : '<div class="text-content final"'
         }
         ${content}
+        </div>
         `
     }
 
