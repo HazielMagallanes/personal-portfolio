@@ -30,21 +30,21 @@ export default class World extends Phaser.Scene {
         this.computers = [];
         this.interactables = [this.doors, this.computers];
         constraintsLayer.forEachTile(tile => {
-            if (![79, 80, 81].includes(tile.index)) return;
+            if (![43, 44, 45].includes(tile.index)) return;
             const worldPos = constraintsLayer.tileToWorldXY(tile.x, tile.y);
-            if(tile.index === 79){
+            if(tile.index === 43){
                 // 🧍 Define player spawn location
                 playerSpawn.x = worldPos.x * constraintsLayer.scaleX;
                 playerSpawn.y = (worldPos.y * constraintsLayer.scaleY) + 7;
                 return;
             }
-            if(tile.index === 80){
+            if(tile.index === 44){
                 // 🚪 Spawn door object
                 this.doors.push(new Door(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) - 7));
                 this.doors[this.doors.length - 1].create();
                 return;
             }
-            if(tile.index === 81){
+            if(tile.index === 45){
                 // 💻 Spawn computer object
                 this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY)));
                 this.computers[this.computers.length - 1].create();
