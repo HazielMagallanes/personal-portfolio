@@ -55,8 +55,8 @@ export default class World extends Phaser.Scene {
         // 🏞️ BG Layers
         // 📝 TODO: Change this placeholders for new sprites with correct size
         this.parallaxLayers = [];
-        for(let i = 1; i < 6; i++){
-            this.parallaxLayers.push(this.add.tileSprite(0, 0 - (height - playerSpawn.y) + 8, width * 1.1, height * 1.1, `city-${i}`).setOrigin(0, 0).setTileScale(0.5, 0.4))
+        for(let i = 1; i < 8; i++){
+            this.parallaxLayers.push(this.add.tileSprite(width * 1.2, height , width, (height * 2) - 25, `city-${i}`).setOrigin(0.5, 0.5));
         }
 
         // 🖌️ Draw map
@@ -127,7 +127,7 @@ export default class World extends Phaser.Scene {
 
         // 🏞️ Parallax layers have to stay fixed to player's X position.
         this.parallaxLayers.forEach((layer) => {
-            layer.setX(this.cameras.main.scrollX - 16);
+            layer.setX(layer.x + (((this.cameras.main.scrollX + (this.scale.width / 2) - layer.x))));
         })
         // 🛠️ DEBUGGING TOOLS
         const {up, down, space} = this.keys;
@@ -143,17 +143,13 @@ export default class World extends Phaser.Scene {
         // 🎞️ Parallax
         if(this.player.isMoving){
             if(this.player.speed < 0){
-                this.parallaxLayers[0].tilePositionX += 0.02
-                this.parallaxLayers[1].tilePositionX += 0.04
-                this.parallaxLayers[2].tilePositionX += 0.16
-                this.parallaxLayers[3].tilePositionX += 0.16
-                this.parallaxLayers[4].tilePositionX += 0.12   
+                for (let i = 0, speed = 0.2; i < 5; i++, speed *= 0.25) {
+                    this.parallaxLayers[i].tilePositionX += speed;
+                }
             }else{
-                this.parallaxLayers[0].tilePositionX -= 0.02
-                this.parallaxLayers[1].tilePositionX -= 0.04
-                this.parallaxLayers[2].tilePositionX -= 0.16
-                this.parallaxLayers[3].tilePositionX -= 0.16
-                this.parallaxLayers[4].tilePositionX -= 0.12   
+                for (let i = 0, speed = 0.2; i < 5; i++, speed *= 0.25) {
+                    this.parallaxLayers[i].tilePositionX -= speed;
+                }
             }
         }
     }
