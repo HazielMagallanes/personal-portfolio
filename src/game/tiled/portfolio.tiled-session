@@ -10,7 +10,7 @@
     "fileStates": {
         "": {
             "scaleInDock": 3,
-            "scaleInEditor": 1
+            "scaleInEditor": 5.5
         },
         "C:/Users/Haziel 7mo P/Documents/Portfolio/personal-portfolio/src/game/map/world.tmx": {
             "scale": 5.5,
@@ -37,10 +37,10 @@
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx": {
             "scale": 4,
-            "selectedLayer": 4,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 198.75,
-                "y": 121.625
+                "x": 237.5,
+                "y": 122.125
             }
         },
         "Q:/Codigos/paginas/portfolio/personal-portfolio/src/game/map/world.tmx#House": {
