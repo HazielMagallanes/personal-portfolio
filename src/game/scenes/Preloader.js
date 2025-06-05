@@ -15,28 +15,22 @@ export default class Preloader extends Phaser.Scene {
         // Loading bar (foreground)
         const progressBar = this.add.graphics();
         // Loading text
-        const loadingText = this.add.text(width / 2, height / 2 - 50, 'Loading...', {
-        fontSize: '20px',
-        fill: '#ffffff'
-        }).setOrigin(0.5);
+        const loadingText = document.getElementById('loading-text');
         // Progress percent text
-        const percentText = this.add.text(width / 2, height / 2, '0%', {
-        fontSize: '18px',
-        fill: '#ffffff'
-        }).setOrigin(0.5);
+        const percentText = document.getElementById('percent-text');
         // Update loading bar on progress
         this.load.on('progress', (value) => {
         progressBar.clear();
         progressBar.fillStyle(0xffffff, 1);
         progressBar.fillRect(width / 2 - 150, height / 2 - 15, 300 * value, 30);
-        percentText.setText(parseInt(value * 100) + '%');
+        percentText.innerText = `${Math.round(value * 100)}%`;
         });
 
         this.load.on('complete', () => {
         progressBar.destroy();
         progressBox.destroy();
-        loadingText.destroy();
-        percentText.destroy();
+        loadingText.style.display = "none";
+        percentText.style.display = "none";
         });
 
 

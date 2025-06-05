@@ -1,5 +1,8 @@
-/*GLOBALS*/
+/* ========================================================================== */
+/*  GLOBAL IMPORTS & FONTS                                                    */
+/* ========================================================================== */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
 @font-face {
   font-family: 'press-start-2p';
   src: url("./game/assets/font/Press_Start_2P/PressStart2P-Regular.ttf") format("truetype");
@@ -8,6 +11,10 @@
   font-family: 'Pixelify-Sans';
   src: url("./game/assets/font/Pixelify_Sans/static/PixelifySans-Bold.ttf") format("truetype");
 }
+
+/* ========================================================================== */
+/*  RESPONSIVE ROOT VARIABLES & PORTRAIT/LANDSCAPE HANDLING                   */
+/* ========================================================================== */
 @media (orientation: portrait){
   :root{
     --container-width: 90vw;
@@ -37,8 +44,46 @@
     display: none;
   }
 }
+
+/* ========================================================================== */
+/*  BASE STYLES & GLOBAL RESETS                                               */
+/* ========================================================================== */
 :root {
-  font-family: 'press-start-2p';
+  /* Font Families */
+  --font-main: 'press-start-2p';
+  --font-secondary: 'Pixelify-Sans', sans-serif;
+
+  /* Container Sizes */
+  --container-width: 55vw;
+  --container-height: 77vh;
+
+  /* Colors */
+  --color-bg-black: #000;
+  --color-white: #fff;
+  --color-blue-outline: #4a90e2;
+  --color-visor-bg: #59a73c6b;
+  --color-visor-shadow1: #f3f77940;
+  --color-visor-shadow2: #296d106b;
+
+  /* Stroke */
+  --stroke-title: 1.4vh;
+  --stroke-final-text: 1.1vh;
+
+  /* Z-Index */
+  --z-previewer-subtitle: 1;
+  --z-previewer: 2;
+
+  /* Arrow Sizes */
+  --arrow-width: calc((82 / 524) * var(--container-width));
+  --arrow-height: calc((82 / 347) * var(--container-height));
+
+  /* Font Sizes */
+  --font-title: 5.5vh;
+  --font-final-text: 3.5vh;
+  --font-final-caption: 5vh;
+  --font-content: 2.5vh;
+  --font-previewer-subtitle: 6.14vh;
+  font-family: var(--font-main);
 }
 * {
   box-sizing: border-box;
@@ -63,25 +108,26 @@ a {
   text-decoration: none;
 }
 
-
+/* ========================================================================== */
+/*  DEBUGGING ELEMENTS                                                        */
+/* ========================================================================== */
 #fps{
   position: absolute;
   top: 5%;
   left: 5%;
 }
 
-
-/*Stylings*/
+/* ========================================================================== */
+/*  LIST STYLES                                                               */
+/* ========================================================================== */
 ul {
   list-style: none;
   padding: 0;
 }
-
 ul li {
   position: relative;
   padding-left: 1.5em;
 }
-
 ul li::before {
   content: '';
   position: absolute;
@@ -95,7 +141,9 @@ ul li::before {
   border: 1px solid white;
 }
 
-
+/* ========================================================================== */
+/*  RETRO WINDOW MAIN CONTAINER                                               */
+/* ========================================================================== */
 #retro-window {
   position: absolute;
   display: none;
@@ -115,6 +163,9 @@ ul li::before {
   background-size: cover;
 }
 
+/* ========================================================================== */
+/*  RETRO WINDOW CONTENT & TEXT                                               */
+/* ========================================================================== */
 #retro-window-content{
   width: 100%;
   height: 100%;
@@ -123,18 +174,12 @@ ul li::before {
   font-optical-sizing: auto;
   font-style: normal;
 }
-.text-content{
-  display: flex;
-}
-.text-content.final{
-  display: flex;
-  width: 100%;
-}
+
 .text-content .title {
   position: absolute;
-  -webkit-text-stroke: 1.4vh black;
+  -webkit-text-stroke: var(--stroke-title) black;
   paint-order: stroke fill;
-  font-size: 5.5vh;
+  font-size: var(--font-title);
   text-align: center;
   line-height: normal;
   top: calc((29 / 347) * var(--container-height));
@@ -142,9 +187,9 @@ ul li::before {
 }
 .text-content .final-text{
   position: absolute;
-  -webkit-text-stroke: 1.1vh black;
+  -webkit-text-stroke: var(--stroke-final-text) black;
   paint-order: stroke fill;
-  font-size: 3.5vh;
+  font-size: var(--font-final-text);
   text-align: left;
   line-height: normal;
   top: calc((29 / 347) * var(--container-height));
@@ -153,16 +198,15 @@ ul li::before {
 .text-content .final-caption{
   position: absolute;
   paint-order: stroke fill;
-  font-size: 5vh;
+  font-size: var(--font-final-caption);
   text-align: left;
   line-height: normal;
   top: calc((120 / 347) * var(--container-height));
   left: calc((28 / 524) * var(--container-width));
 }
-
 .text-content .content{
   position: absolute;
-  font-size: 2.5vh;
+  font-size: var(--font-content);
   text-align: left;
   line-height: normal;
   top: calc((63 / 347) * var(--container-height));
@@ -172,22 +216,24 @@ ul li::before {
   width: calc((231 / 524) * var(--container-width));
 }
 
+/* ========================================================================== */
+/*  PREVIEWER & VISOR                                                         */
+/* ========================================================================== */
 .previewer-subtitle{
-  z-index: 1;
-  -webkit-text-stroke: 1.4vh black;
+  z-index: var(--z-previewer-subtitle);
+  -webkit-text-stroke: var(--stroke-title) black;
   paint-order: stroke fill;
-  font-size: 6.14vh;
+  font-size: var(--font-previewer-subtitle);
   text-align: center;
   line-height: normal;
 }
-
 .previewer {
   width: calc((300 / 524) * var(--container-width));
   height: auto;
   position: absolute;
   top: calc((25 / 347) * var(--container-height));
   left: calc((240 / 524) * var(--container-width));
-  z-index: 2;
+  z-index: var(--z-previewer);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,9 +243,8 @@ ul li::before {
 .visor {
   width: calc((161 / 524) * var(--container-width));
   height: calc((171 / 347) * var(--container-height));
-  background-color: #59a73c6b;
-  box-shadow: -22px 6px 0px #f3f77940, -22px 9px 0px #f3f77940, 0px 4px 0px
-    #296d106b;
+  background-color: var(--color-visor-bg);
+  box-shadow: -22px 6px 0px var(--color-visor-shadow1), -22px 9px 0px var(--color-visor-shadow1), 0px 4px 0px var(--color-visor-shadow2);
 }
 .previewer.projects {
   top: calc((65 / 347) * var(--container-height));
@@ -218,9 +263,13 @@ ul li::before {
   margin-left: 10%;
   filter: brightness(0.5) hue-rotate(60deg) saturate(1);
 }
+
+/* ========================================================================== */
+/*  RETRO WINDOW CONTROLS: ARROWS                                             */
+/* ========================================================================== */
 .retro-window-controls .arrow{
-  width: calc((82 / 524) * var(--container-width));
-  height: calc((82 / 347) * var(--container-height));
+  width: var(--arrow-width);
+  height: var(--arrow-height);
   background-image: url(./game/assets/html/img/retro-window/arrow.svg);
   position: absolute;
   background-repeat: no-repeat;
@@ -229,8 +278,8 @@ ul li::before {
   cursor: pointer;
 }
 .retro-window-controls .triple-arrow{
-  width: calc((((82 / 524) * var(--container-width)) * 3) + ((48 / 524) * var(--container-width)));
-  height: calc((82 / 347) * var(--container-height));
+  width: calc((var(--arrow-width) * 3) + ((48 / 524) * var(--container-width)));
+  height: var(--arrow-height);
   position: absolute;
   top: calc((236 / 347) * var(--container-height));
   left: calc((305 / 524) * var(--container-width));
@@ -241,7 +290,6 @@ ul li::before {
   left: calc((-100 / 524) * var(--container-width));
   transform: rotateZ(180deg);
 }
-
 .retro-window-controls .triple-arrow:hover{
   cursor: pointer;
 }
@@ -258,8 +306,8 @@ ul li::before {
   animation: arrow-bounce 2s ease-in-out 600ms infinite alternate-reverse none;
 }
 .retro-window-controls #double-arrow{
-  width: calc((((82 / 524) * var(--container-width)) * 2));
-  height: calc((82 / 347) * var(--container-height));
+  width: calc(var(--arrow-width) * 2);
+  height: var(--arrow-height);
   position: absolute;
   top: calc((236 / 347) * var(--container-height));
   left: calc((280 / 524) * var(--container-width));
@@ -275,7 +323,9 @@ ul li::before {
   animation: arrow-bounce-flipped 2s ease-in-out 400ms infinite alternate-reverse none;
 }
 
-
+/* ========================================================================== */
+/*  RETRO WINDOW CORNERS                                                      */
+/* ========================================================================== */
 .retro-window-corners{
   position: absolute;
   width: 100%;
@@ -288,6 +338,31 @@ ul li::before {
   width: 100%;
   height: 100%;
 }
+
+/* ========================================================================== */
+/*  LOADING SCREEN                                                            */
+/* ========================================================================== */
+.loading-screen {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9999;
+  font-family: 'press-start-2p';
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* ========================================================================== */
+/*  ANIMATIONS                                                                */
+/* ========================================================================== */
 @keyframes arrow-bounce {
   from{
     transform: translateX(0);
