@@ -18,6 +18,8 @@ export default class Preloader extends Phaser.Scene {
         const loadingText = document.getElementById('loading-text');
         // Progress percent text
         const percentText = document.getElementById('percent-text');
+        // Loading screen
+        const loadingScreen = document.getElementById('loading-screen');
         // Update loading bar on progress
         this.load.on('progress', (value) => {
         progressBar.clear();
@@ -29,8 +31,10 @@ export default class Preloader extends Phaser.Scene {
         this.load.on('complete', () => {
         progressBar.destroy();
         progressBox.destroy();
+
         loadingText.style.display = "none";
         percentText.style.display = "none";
+        loadingScreen.style.display = "none";
         });
 
 
