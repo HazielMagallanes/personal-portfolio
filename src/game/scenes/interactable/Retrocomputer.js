@@ -35,14 +35,14 @@ export default class Retrocomputer extends Interactable {
         this.currentPhoto = 0;
         this.visor;
         this.photosOfMe = [
-            "/assets/html/img/me/1.webp",
-            "/assets/html/img/me/2.webp",
-            "/assets/html/img/me/3.webp",
-            "/assets/html/img/me/4.webp",
-            "/assets/html/img/me/5.webp",
-            "/assets/html/img/me/6.webp",
-            "/assets/html/img/me/7.webp",
-            "/assets/html/img/me/8.webp"
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/1.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/2.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/3.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/4.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/5.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/6.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/7.webp",
+            "http://eestn2.ghostix.com.ar:9090/hazus-portfolio/assets/html/img/me/8.webp"
         ];
         // Initialize visorUpdater
         this.visorUpdate();
