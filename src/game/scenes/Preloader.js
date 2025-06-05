@@ -38,7 +38,7 @@ export default class Preloader extends Phaser.Scene {
         });
 
 
-        this.load.path = './src/game/assets/'
+        this.load.path = 'assets/'
         // 🎨 UI
         this.load.atlas('UI', './sprites/UI/UI.png', './sprites/UI/UI.json');
         this.load.image('tutorial', './sprites/UI/tutorial.png')

@@ -5,11 +5,11 @@
 
 @font-face {
   font-family: 'press-start-2p';
-  src: url("./game/assets/font/Press_Start_2P/PressStart2P-Regular.ttf") format("truetype");
+  src: url("/assets/font/Press_Start_2P/PressStart2P-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: 'Pixelify-Sans';
-  src: url("./game/assets/font/Pixelify_Sans/static/PixelifySans-Bold.ttf") format("truetype");
+  src: url("/assets/font/Pixelify_Sans/static/PixelifySans-Bold.ttf") format("truetype");
 }
 
 /* ========================================================================== */
@@ -159,7 +159,7 @@ ul li::before {
     rgba(0, 85, 146, 0.34) 0%,
     rgba(7, 0, 10, 0.34) 100%
   );
-  background-image: url(./game/assets/html/img/retro-window/gradient.png);
+  background-image: url(/assets/html/img/retro-window/gradient.png);
   background-size: cover;
 }
 
@@ -270,7 +270,7 @@ ul li::before {
 .retro-window-controls .arrow{
   width: var(--arrow-width);
   height: var(--arrow-height);
-  background-image: url(./game/assets/html/img/retro-window/arrow.svg);
+  background-image: url(/assets/html/img/retro-window/arrow.svg);
   position: absolute;
   background-repeat: no-repeat;
   background-position: center;
