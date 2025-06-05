@@ -54,6 +54,17 @@ export default class Retrocomputer extends Interactable {
                 this.toggleWindow();
             }
         })
+        // Keyboard navigation delay after opening window
+        this.keyboardInputEnabled = false;
+        this.scene.input.keyboard.on('keyup', (event) => {
+            if (!this.isOpen || !this.keyboardInputEnabled) return;
+            const key = event.key;
+            if (key === 'ArrowRight' || key === 'd' || key === 'D' || key === ' ' || key === 'Spacebar') {
+                this.nextPage();
+            } else if (key === 'ArrowLeft' || key === 'a' || key === 'A') {
+                this.pastPage();
+            }
+        });
         document.addEventListener('touchstart', (event) => {
             if(this.isOpen && !document.getElementById('retro-window').contains(event.target)){
                 this.scene.events.emit('unlockinput');
@@ -80,7 +91,7 @@ export default class Retrocomputer extends Interactable {
         this.windowContent.innerHTML = this.getPagesContent(this.page);
     }
     pastPage(){
-        this.page -= 1;
+        this.page = Object.keys(this.pagesKeys).includes((this.page - 1).toString()) ? this.page - 1 : 1;
         this.windowContent.innerHTML = this.getPagesContent(this.page);
     }
     toggleWindow(){
@@ -88,12 +99,17 @@ export default class Retrocomputer extends Interactable {
             this.isOpen = false;
             this.retroWindow.style.display = 'none';
             this.page = 1;
+            this.keyboardInputEnabled = false;
         }else{
             this.isOpen = true;
             this.scene.events.emit('blockinput');
             // 🖥️ Open window
             this.retroWindow.style.display = 'flex';
             this.windowContent.innerHTML = this.getPagesContent(1);
+            this.keyboardInputEnabled = false;
+            setTimeout(() => {
+                if (this.isOpen) this.keyboardInputEnabled = true;
+            }, 1000);
         }
     }
     // CONTENT GETTERS (Based on React jsx component system)
@@ -285,6 +301,7 @@ export default class Retrocomputer extends Interactable {
 
     update(){
         super.update();
+        
         if(this.scene.physics.overlap(this.interactableArea, this.scene.player)){
             // 🖱️ Show object is interactable
             this.anims.play('computershiftingcolors-outlined', true);
