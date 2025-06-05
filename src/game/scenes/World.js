@@ -46,7 +46,7 @@ export default class World extends Phaser.Scene {
             }
             if(tile.index === 45){
                 // 💻 Spawn computer object
-                this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY)));
+                this.computers.push(new Retrocomputer(this, worldPos.x * constraintsLayer.scaleX + 16, (worldPos.y * constraintsLayer.scaleY) + 1));
                 this.computers[this.computers.length - 1].create();
                 return;
             }
@@ -56,7 +56,7 @@ export default class World extends Phaser.Scene {
         // 📝 TODO: Change this placeholders for new sprites with correct size
         this.parallaxLayers = [];
         for(let i = 1; i < 8; i++){
-            this.parallaxLayers.push(this.add.tileSprite(width * 1.2, height , width, (height * 2) - 25, `city-${i}`).setOrigin(0.5, 0.5));
+            this.parallaxLayers.push(this.add.tileSprite(- (width / 2), 12, width * 2, height, `city-${i}`).setOrigin(0, 0).setScrollFactor(0, 1));
         }
 
         // 🖌️ Draw map
@@ -125,10 +125,6 @@ export default class World extends Phaser.Scene {
             interactableList.forEach(interactable => {interactable.update()});
         });
 
-        // 🏞️ Parallax layers have to stay fixed to player's X position.
-        this.parallaxLayers.forEach((layer) => {
-            layer.setX(layer.x + (((this.cameras.main.scrollX + (this.scale.width / 2) - layer.x))));
-        })
         // 🛠️ DEBUGGING TOOLS
         const {up, down, space} = this.keys;
         if(down.isDown){
@@ -141,15 +137,27 @@ export default class World extends Phaser.Scene {
         this.fpsText.innerHTML = Math.FloorTo(this.game.loop.actualFps);
 
         // 🎞️ Parallax
+        this.parallaxLayers[1].tilePositionX += 0.004;
+        this.parallaxLayers[2].tilePositionX += 0.008;
+        this.parallaxLayers[3].tilePositionX += 0.01;
         if(this.player.isMoving){
-            if(this.player.speed < 0){
-                for (let i = 0, speed = 0.2; i < 5; i++, speed *= 0.25) {
-                    this.parallaxLayers[i].tilePositionX += speed;
-                }
-            }else{
-                for (let i = 0, speed = 0.2; i < 5; i++, speed *= 0.25) {
-                    this.parallaxLayers[i].tilePositionX -= speed;
-                }
+            // Move clouds a bit.
+            if(this.player.speed > 0){
+                this.parallaxLayers[1].tilePositionX += 0.012;
+                this.parallaxLayers[2].tilePositionX += 0.014;
+                this.parallaxLayers[3].tilePositionX += 0.017;
+            }else {
+                // The same but for the other direction.
+                this.parallaxLayers[1].tilePositionX -= 0.012;
+                this.parallaxLayers[2].tilePositionX -= 0.014;
+                this.parallaxLayers[3].tilePositionX -= 0.017;
+            }
+            // 🏙️ Parallax layers 4 to 7 (Buildings)
+            let speed = 0.1;
+            for (let i = this.parallaxLayers.length - 1; i > 2; i--) {
+                this.parallaxLayers[i].tilePositionX = this.player.speed > 0 ? 
+                this.parallaxLayers[i].tilePositionX + speed : this.parallaxLayers[i].tilePositionX - speed;
+                speed *= 0.8;
             }
         }
     }

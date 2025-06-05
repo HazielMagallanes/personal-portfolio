@@ -2,10 +2,44 @@ import langs from "./UI/LangUtil";
 
 export default class Preloader extends Phaser.Scene {
     constructor() {
-        super('Preloader');
+        super( {key: 'Preloader'} );
     }
 
     preload() {
+        // Center coordinates
+        const { width, height } = this.cameras.main;
+        // Create a background rectangle for the loading bar
+        const progressBox = this.add.graphics();
+        progressBox.fillStyle(0x222222, 0.8);
+        progressBox.fillRect(width / 2 - 160, height / 2 - 25, 320, 50);
+        // Loading bar (foreground)
+        const progressBar = this.add.graphics();
+        // Loading text
+        const loadingText = this.add.text(width / 2, height / 2 - 50, 'Loading...', {
+        fontSize: '20px',
+        fill: '#ffffff'
+        }).setOrigin(0.5);
+        // Progress percent text
+        const percentText = this.add.text(width / 2, height / 2, '0%', {
+        fontSize: '18px',
+        fill: '#ffffff'
+        }).setOrigin(0.5);
+        // Update loading bar on progress
+        this.load.on('progress', (value) => {
+        progressBar.clear();
+        progressBar.fillStyle(0xffffff, 1);
+        progressBar.fillRect(width / 2 - 150, height / 2 - 15, 300 * value, 30);
+        percentText.setText(parseInt(value * 100) + '%');
+        });
+
+        this.load.on('complete', () => {
+        progressBar.destroy();
+        progressBox.destroy();
+        loadingText.destroy();
+        percentText.destroy();
+        });
+
+
         this.load.path = './src/game/assets/'
         // 🎨 UI
         this.load.atlas('UI', './sprites/UI/UI.png', './sprites/UI/UI.json');

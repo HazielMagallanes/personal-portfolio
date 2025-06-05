@@ -12,6 +12,7 @@
   :root{
     --container-width: 90vw;
     --container-height: 30vh;
+    background-color: black;
   }
   .contingency-plan-for-portrait{
     display: flex;
